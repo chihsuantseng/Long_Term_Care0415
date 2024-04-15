@@ -1,0 +1,181 @@
+﻿/* 假設將手機設為最小寬度，並適用相應的樣式 */
+/* 桌面版 */
+
+body {
+    background-color: linear-gradient(45deg, #d1fdff, #fddb92);
+    background-color: #EFF4FF;
+    font-size: 20px;
+}
+
+@media (min-width: 1024px) {
+
+    /* 在這裡放置桌面版的 CSS 樣式 */
+    #add_record {
+        margin-top: 1%;
+    }
+
+    #record_form {
+        padding: 20px;
+        border: 1px solid #000;
+        border-radius: 20px;
+        /* height: 80%; */
+        background-color: white;
+    }
+
+    ._label {
+        font-size: 20px;
+        margin-right: 10px;
+        font-weight: bold;
+        color: lightcoral;
+    }
+
+    #first_row {
+        display: flex;
+        justify-content: space-between;
+        /* margin-bottom: 20px; */
+    }
+
+    #two_row {
+        display: flex;
+        justify-content: space-between;
+        /* margin-bottom: 20px; */
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    #_name {
+        width: 190px;
+    }
+
+    #_date,
+    #_time {
+        width: 210px;
+    }
+
+    #_temperature,
+    #heart_beat,
+    #_breathe,
+    #bef_meal,
+    #aft_meal,
+    #_systolic,
+    #_diastolic {
+        width: 170px;
+    }
+
+    #_breakfast, #_lunch, #_dinner {
+        width: 250px;
+    }
+
+    .form-control {
+        display: inline;
+    }
+
+    ._pressure, ._sugar, ._diet {
+        font-size: 20px;
+        color: cornflowerblue;
+    }
+}
+
+/* 平板 */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    /* 在這裡放置平板的 CSS 樣式 */
+    #add_record {
+        margin-top: 1%;
+    }
+
+    #record_form {
+        padding: 20px;
+        border: 1px solid #000;
+        border-radius: 20px;
+        /* height: 80%; */
+        background-color: white;
+    }
+
+    ._label {
+        font-size: 24px;
+        margin-right: 10px;
+        font-weight: bold;
+        color: lightcoral;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    #_name {
+        width: 40%;
+    }
+
+    #_date,
+    #_time {
+        width: 40%;
+        /* display: inline-flex; */
+    }
+
+    #_temperature,
+    #heart_beat,
+    #_breathe {
+        width: 40%;
+    }
+
+    #bef_meal,
+    #aft_meal,
+    #_systolic,
+    #_diastolic {
+        width: 170px;
+    }
+
+    .form-control {
+        display: inline;
+    }
+
+    ._pressure, ._sugar, ._diet {
+        font-size: 22px;
+        color: cornflowerblue;
+    }
+}
+
+/* 手機 */
+@media (max-width: 767px) {
+
+    /* 在這裡放置手機的 CSS 樣式 */
+    #add_record {
+        margin-top: 1%;
+    }
+
+    #record_form {
+        padding: 20px;
+        border: 1px solid #000;
+        border-radius: 20px;
+        /* height: 80%; */
+        background-color: white;
+    }
+
+    ._label {
+        font-size: 28px;
+        font-weight: bold;
+        color: lightcoral;
+    }
+
+    #_name,
+    #_date,
+    #_time,
+    #_temperature,
+    #heart_beat,
+    #_breathe {
+        display: inline;
+        width: 50%;
+    }
+
+    ._pressure, ._sugar, ._diet {
+        font-size: 22px;
+        color: cornflowerblue;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+}

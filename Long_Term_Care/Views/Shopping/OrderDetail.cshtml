@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Long_Term_Care.Models.OrderDetail>
+
+@{
+	ViewBag.Title = "訂單明細";
+	Layout = "_LayoutMember";
+	int? OrderDetailTotal = 0;  // 起始化總和
+}
+<div class="mb-4">
+	<h4>
+		<a class="btn btn-outline-secondary" asp-controller="Home" asp-action="Index">首頁</a>
+		&nbsp>&nbsp<a class="btn btn-outline-secondary" href="/Members/Edit?id = member.MemberId">會員中心</a>
+		&nbsp>&nbsp<a class="btn btn-outline-secondary" asp-controller="Shopping" asp-action="OrderList">商品訂單</a>
+		&nbsp>&nbsp<a class="btn btn-success" asp-controller="Shopping" asp-action="OrderDetail">訂單明細</a>
+	</h4>
+	<hr />
+</div>
+
+<h2 class="mb-3">會員訂單明細</h2>
+<h4>訂單編號: @ViewBag.OrderGuid </h4>
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.SupplementName)
+		</th>
+		<th class="text-center">
+			@Html.DisplayNameFor(model => model.SupplementPrice)
+		</th>
+		<th class="text-center">
+			@Html.DisplayNameFor(model => model.Quantity)
+		</th>
+		<th class="text-center">
+			小計
+		</th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.SupplementName)
+			</td>
+			<td class="text-center">
+				NT$ @Html.DisplayFor(modelItem => item.SupplementPrice)
+			</td>
+			<td class="text-center">
+				@Html.DisplayFor(modelItem => item.Quantity)
+			</td>
+			<td class="text-center">
+				NT$ @(item.SupplementPrice * item.Quantity)
+			</td>
+		</tr>
+
+		OrderDetailTotal += @item.SupplementPrice * @item.Quantity; // 將小計加到總和中
+	}
+</table>
+<div style="text-align: right">
+	<p class="fs-4 me-3">總金額     NT$ @OrderDetailTotal</p>
+	<a class="btn btn-outline-secondary" asp-controller="Shopping" asp-action="OrderList">返回商品訂單</a>
+</div>

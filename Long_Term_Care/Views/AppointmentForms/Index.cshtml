@@ -1,0 +1,109 @@
+﻿@model IEnumerable<Long_Term_Care.Models.AppointmentForm>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<link rel="stylesheet" href="~/css/AppointmentForm/css/appointIndex.css" asp-append-version="true">
+
+<div class="container" id="first_top">
+    <h1>
+        服務紀錄<a asp-controller="CareRecords" asp-action="Index" id="view_care">查看照護紀錄表</a>
+    </h1>
+
+
+    <div class="table-responsive" id="app_Index">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    @* <th>
+                    @Html.DisplayNameFor(model => model.ReserveTime)
+                    </th> *@
+                    @* <th>
+                    @Html.DisplayNameFor(model => model.CaseAvatar)
+                    </th> *@
+                    <th>
+                        預約編號
+                    </th>
+                    <th>
+                        個案姓名
+                    </th>
+                    <th>
+                        員工姓名
+                    </th>
+                    <th>
+                        服務日期
+                    </th>
+                    <th>
+                        開始時間
+                    </th>
+                    <th>
+                        結束時間
+                    </th>
+                    @* <th>
+                    @Html.DisplayNameFor(model => model.Case)
+                    </th>
+                    <th>
+                    @Html.DisplayNameFor(model => model.Employee)
+                    </th>
+                    <th>
+                    @Html.DisplayNameFor(model => model.Member)
+                    </th> *@
+                    <th>
+                        服務項目
+                    </th>
+                    <th>
+                        新增紀錄
+                    </th>
+                    @* <th>查看紀錄</th> *@
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ReserveId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CaseName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmployeeName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.WorkingDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StartTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EndTime)
+                        </td>
+                        
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Service.ServiceName)
+                        </td>
+                        <td>
+                            @*  <a asp-action="Edit" asp-route-id="@item.ReserveId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.ReserveId">Details</a> | *@
+                        @* <a asp-action="Delete" asp-route-id="@item.ReserveId">Delete</a> *@
+                            
+                            <a asp-controller="CareRecords" asp-action="Create" id="cre_record"
+                               asp-route-reserveId="@item.ReserveId" asp-route-caseName="@item.CaseName"
+                               asp-route-caseId="@item.CaseId" asp-route-employeeId="@item.EmployeeId"
+                               asp-route-employeeName="@item.EmployeeName" asp-route-recordDate="@item.WorkingDate"
+                               asp-route-recordTime="@item.EndTime" asp-route-memberId="@item.MemberId">新增照護紀錄</a>
+							
+
+                        </td>
+                        
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

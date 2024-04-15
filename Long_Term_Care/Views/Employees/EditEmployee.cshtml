@@ -1,0 +1,140 @@
+﻿@model Long_Term_Care.Models.Employee
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<link rel="stylesheet" href="/css/SignUp/SignUp.css" asp-append-version="true">
+
+
+
+<form class="row g-3 modal_content_sign w-100" asp-action="EditEmployee" enctype="multipart/form-data">
+    <h1>員工編輯</h1>
+    <hr />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="EmployeeId" />
+    <hr />
+    <div class="col-md-6">
+        <label asp-for="EmployeeAvatar" class="control-label"><b>大頭貼</b></label><br />
+        @if (Model.EmployeeAvatar != null)
+        {
+            <figure class="figure w-25 bg-light ratio ratio-1x1" style="border-radius: 50%;">
+                <img id="apple" class="figure-img img-fluid " src="data:image/*;base64,@(Convert.ToBase64String(Model.EmployeeAvatar))" style="border-radius: 50%;">
+            </figure>
+            <input asp-for="EmployeeAvatar" class="form-control" value="@(Convert.ToBase64String(Model.EmployeeAvatar))" type="hidden" />
+        }
+
+        else
+        {
+            <img id="apple" src="">
+        }
+
+        <input asp-for="EmployeeAvatar" class="form-control" type="file" onchange="document.getElementById('apple').src = window.URL.createObjectURL(this.files[0])" />
+        <span asp-validation-for="EmployeeAvatar" class="text-danger"></span>
+    </div>
+    <div class="col-md-6 w-100"></div>
+    <div class="col-md-6">
+        <label class="control-label"><b>*帳號：</b></label>
+        <input asp-for="UserName" class="form-control" />
+
+        <span asp-validation-for="UserName" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label class="control-label"><b>*密碼：</b></label>
+        <input asp-for="Password" class="form-control" />
+
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label class="control-label"><b>*姓名：</b></label>
+        <input asp-for="EmployeeName" class="form-control" />
+
+        <span asp-validation-for="EmployeeName" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label class="control-label"><b>*性別：</b></label><br />
+        <div class="form-check form-check-inline">
+            <input asp-for="Gender" class="form-check-input" type="radio" id="inlineCheckbox3" name="Gender" value="男性">
+            <label class="form-check-label" for="inlineCheckbox3">男性</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input asp-for="Gender" class="form-check-input" type="radio" id="inlineCheckbox4" name="Gender" value="女性">
+            <label class="form-check-label" for="inlineCheckbox4">女性</label>
+        </div>
+        <span asp-validation-for="Gender" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label class="control-label"><b>*生日：</b></label>
+        <input asp-for="Birthdate" class="form-control" />
+        <span asp-validation-for="Birthdate" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label class="control-label"><b>*年齡：</b></label>
+        <input asp-for="Age" class="form-control" />
+        <span asp-validation-for="Age" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label class="control-label"><b>*身分證：</b></label>
+        <input asp-for="IdentificationNumber" class="form-control" />
+        <span asp-validation-for="IdentificationNumber" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label class="control-label"><b>*身分別：</b></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label class="control-label"><b>*手機號碼：</b></label>
+        <input asp-for="MobilePhone" class="form-control" />
+        <span asp-validation-for="MobilePhone" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label class="control-label"><b>*市話：</b></label>
+        <input asp-for="HomePhone" class="form-control" />
+        <span asp-validation-for="HomePhone" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label class="control-label"><b>*到職日：</b></label>
+        <input asp-for="HireDate" class="form-control" / readonly>
+        <span asp-validation-for="HireDate" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label class="control-label"><b>*城市：</b></label>
+        <input asp-for="City" class="form-control" />
+        <span asp-validation-for="City" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label class="control-label"><b>*地區：</b></label>
+        <input asp-for="District" class="form-control" />
+        <span asp-validation-for="District" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label class="control-label"><b>*地址：</b></label>
+        <input asp-for="Address" class="form-control" />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label class="control-label"><b>*員工狀態：</b></label>
+        <input asp-for="EmploymentStatus" class="form-control" />
+        <span asp-validation-for="EmploymentStatus" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label class="control-label"><b>*主管：</b></label>
+        <input asp-for="Supervisor" class="form-control" />
+        <span asp-validation-for="Supervisor" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label class="control-label"><b>*職稱：</b></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class=" text-danger"></span>
+    </div>
+    <div class="col-md-6"></div>
+
+    <div class="col-12 signbtn">
+        <!-- 要加入超連結轉跳 -->
+        <button class="btn btn-success signup_btn xdd1" role="button" type="submit">確認</button>
+        <a class="btn btn-danger cancel_btn xdd1" role="button" type="button" asp-action="LogIn" asp-controller="Members">取消</a>
+    </div>
+</form>
+
+

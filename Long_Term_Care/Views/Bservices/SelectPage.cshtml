@@ -1,0 +1,104 @@
+﻿@model List<Long_Term_Care.Models.Case>
+
+<style>
+    .sel_opt{
+			margin-top: 2%;
+			margin-left: 30%;
+			width: 40%;
+		}
+
+    #sel_case{
+			margin-left: 30%;
+			font-size: 24px;
+    }
+        #b_care{
+            margin-top: 1%;
+            margin-left: 30%;
+            font-size:50px;
+            width: 40%;
+          
+        }
+        #g_care{
+            margin-bottom: 5%;
+            margin-left: 30%;
+            font-size:50px;
+            width: 40%;
+        }
+</style>
+
+    <div class="container">
+        <div>
+            <h1 class="sel_opt">Step1：請選擇被照顧者</h1>
+        <select id="sel_case" >
+                <option value="">請選擇</option>
+                @foreach (Case c in Model)
+                {
+			        <option value="@c.CaseId">@c.CaseName</option>
+		        }
+		    </select>
+        </div>
+        <hr />
+        <div>
+        <h1 class="sel_opt">Step2：請選擇服務類別</h1>
+        </div>
+        <div>
+            <a id="b_care_link" href="">
+            <input type="button" id="b_care" class="btn btn-lg btn-warning" value="照顧服務預約">
+            </a>
+        </div>
+        <br />
+        <div>
+        @* asp-controller="Gservices" asp-action="Edit" asp-route-id="" *@
+        <a id="g_care_link" href="">
+            <input type="button" id="g_care" class="btn btn-lg btn-success" value="喘息服務預約">
+            </a>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        window.onload = function () {
+            document.getElementById("sel_case").selectedIndex = 0;
+        };
+        //選擇個案後，將個案id傳到參數中
+        $(document).ready(function () {
+            $("#sel_case").change(function () {
+                var caseId = $(this).val();
+                var editUrl = "Edit/" + caseId;
+                $("#b_care_link").attr("href", editUrl);
+
+                var geditUrl = "/Gservices/Edit/" + caseId;
+                $("#g_care_link").attr("href", geditUrl);
+            });
+
+            $("#b_care").click(function () {
+                var href = $("#b_care_link").attr("href");
+                if (href !== "") {
+                    window.location.href = href;
+                } else {
+                    alert("請選擇被照顧者");
+                }
+                
+                    //用localstorage儲存選擇的個案名稱
+                    var casename = "name";
+                    var data = document.querySelector('#sel_case').selectedOptions[0].text;
+                    var jsonData = JSON.stringify(data);
+                    localStorage.setItem(casename, jsonData);
+            });
+
+            $("#g_care").click(function () {
+                var href = $("#g_care_link").attr("href");
+                if ( href !== "") {
+                    window.location.href = href;
+                }else{
+					alert("請選擇被照顧者");
+				}
+                
+                //用localstorage儲存選擇的個案名稱
+                var gcasename = "gname";
+                var data = document.querySelector('#sel_case').selectedOptions[0].text;
+                var jsonData = JSON.stringify(data);
+                localStorage.setItem(gcasename, jsonData);
+            });
+        });
+    </script>
+   

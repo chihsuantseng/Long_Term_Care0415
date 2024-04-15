@@ -1,0 +1,64 @@
+﻿@model List<HealthSupplement>
+
+<link rel="stylesheet" href="~/css/AnalyzeResult/css/AnalizeResult.css">
+
+@* @{
+    // 檢查 ViewData 中是否存在 "AllRecommand" 鍵，並確保其類型為 List<string>
+    if (ViewData["AllRecommand"] is List<string> allRecommand)
+    {
+        <h2>All Recommendations:</h2>
+        <ul>
+            @foreach (var item in allRecommand)
+            {
+                <li>@item</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No recommendations available.</p>
+    }
+} *@
+    
+    @* <p>Test Value: @ViewBag.recommand</p> *@
+   
+    <h3 class="p-4 container-fluid d-flex justify-content-center" id="thankColume">-根據檢驗數據分析，以下是適合您的保健品-</h3>
+
+
+<link rel="stylesheet" href="~\wwwroot\css\AnalyzeResult\css\AnalizeResult.css">
+
+@foreach (var obj in Model)
+{
+<div class="container-fluid" id="main_wrapper">
+        <form method="post">
+      
+   
+    @* @foreach (var obj in Model) *@
+    @* { *@
+    
+        <!-- card - shows health supplement ananlyze result -->
+        <div class="ananlyze_resultcontainer-fluid" id="ananlyze_result">
+            <!-- first health supplement -->
+            <div class="card mb-4" style="max-width: 1000px;" asp-action="AnayzeResult">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                            @* <img src="~/css/AnalyzeResult/img/bitterGourd.png" class="img-fluid rounded-start" alt="..."> *@
+                            <img src="data:image/*;base64,@(Convert.ToBase64String(@obj.SupplementImg))" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                                @* <h5 class="card-title" asp-controller="" asp-for="">專利苦瓜胜肽</h5> *@
+                                <h5 class="card-title" asp-controller="" asp-for="">@obj.SupplementName</h5>
+                                @* <p class="card-text" asp-for="SupplementDescription">●搭配鉻&鋅幫助維持醣類正常代謝<br>●促進新陳代謝、幫助窈窕美麗<br>●專利SPBP苦瓜胜?幫助調整體質<br>●精選搭配植萃武靴葉幫助調節生理機能<br>●嚴選天然酵母萃取礦物質好吸收<br></p> *@
+                                <p class="card-text" asp-for="SupplementDescription">@obj.SupplementDescription</p>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    @* } *@
+
+
+    </form>
+</div>
+}

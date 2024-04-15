@@ -1,0 +1,61 @@
+﻿<script src="/css/health_items/health_items.js" defer></script>
+
+ *@{
+	var productsInfo = ViewBag.ProductsInfo;
+	ViewBag.Title = "我適合補充這些";
+	Layout = "_LayoutHealth";
+}
+
+<!-- 上方欄位 -->
+<div class="container">
+	<div class="mt-5 shadow p-5 mb-5 rounded ">
+		<h3 id="nameDisplay">
+			親愛的 @ViewBag.UserName :
+		</h3>
+		<h3>感謝您的用心填寫</h3>
+		<h3>以下是推薦給您的保健品</h3>
+	</div>
+</div>
+<!-- 推薦的產品 -->
+<div class="container-fluid" id="cardContainer">
+	<div class="row p-5">
+		@foreach (var product in productsInfo)
+		{
+			<div class="col-4">
+				<div class="card  p-4 mb-5 ms-5 shadow rounded">
+					<img src="~/css/health_items/img/@product.img" class=" img-fluid rounded-start">
+					<div class="card-body">
+						<h3 class="card-title">@product.p_name</h3>
+						<h5 class="mt-2">推薦您的產品特色~</h5>
+						<pre class="card-text">@product.des</pre>
+					</div>
+					<div class="d-flex mt-3 justify-content-center">
+						@* 增加商品 *@
+						<a class="NumberPlus">
+							<i class="fa-solid fa-square-plus fa-2x"></i>
+						</a>
+						@* 數量呈現 *@
+						<div class="ms-2 me-2">
+							<input type="number" value="1" id="quantity_@product.id" class=" text-center" min="1" max="20">
+						</div>
+						@* 減少商品 *@
+						<a class="Numberminus">
+							<i class="fa-solid fa-square-minus fa-2xl"></i>
+						</a>
+					</div>
+					<div class=" text-center mb-auto">
+						<a href="#" class="btn btn-primary form-control"
+						   onclick="addToCar_form('@product.id','@product.p_name'); return false;">
+							加入購物車
+						</a>
+					</div>
+				</div>
+			</div>
+		}
+	</div>
+</div>
+<div class="container">
+	<div class="text-center mb-5">
+		<a href="/Health/health_items" class="btn btn-primary text-center" role="button">想看更多保健品~</a>
+	</div>
+</div>

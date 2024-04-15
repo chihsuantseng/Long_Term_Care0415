@@ -1,0 +1,31 @@
+﻿#body_grid {
+    background-color: rgb(237, 231, 221);
+}
+
+h2 {
+    text-align: center;
+}
+
+div #home_care, #respite_care, #health_supplements {
+    padding: 100px;
+}
+
+#services_img1, #services_img3 {
+    height: 400px;
+    width: 550px;
+    padding: 50px;
+}
+
+#services_img2 {
+    height: 400px;
+    width: 550px;
+    padding: 50px;
+}
+
+#services_img1, #services_img2, #services_img3 {
+    border-radius: 75px;
+}
+
+div.p_text p {
+    font-size: 18px;
+}

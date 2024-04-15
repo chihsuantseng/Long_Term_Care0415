@@ -1,0 +1,114 @@
+﻿html,
+body {
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    min-height: 100%;
+    /*外層高度100%*/
+    margin-bottom: 0px;
+    /*隨footer高度需做調整*/
+}
+
+.content {
+    padding-bottom: 50px;
+    /*避免文字超出瀏覽器時，內容區塊不會和footer打架*/
+}
+
+a,
+a:hover {
+    text-decoration: none !important;
+    -webkit-transition: .2s all ease;
+    -o-transition: .2s all ease;
+    transition: .2s all ease;
+}
+
+body {
+    background-color: rgb(255, 255, 255);
+}
+
+/* 頂端bar */
+
+.top_bar {
+    padding: .5rem 0;
+    background: #eee;
+}
+
+    .top_bar a {
+        color: #666666;
+    }
+
+/* 導覽列 */
+._navsite {
+    background: #FAF8F3 !important;
+    padding: 0;
+}
+
+
+/* 標題 */
+._title {
+    color: #DDABA0;
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-left: -25%;
+}
+
+/* .logo_title {
+    padding: 0;
+} */
+
+/* 頁首的選單 */
+.list_font ul > li {
+    font-size: 1.2rem;
+    /* letter-spacing: 1px; */
+}
+
+/* 頁首的欄位排版 */
+.list_position {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 30px;
+}
+
+/* 下拉選單的樣式 */
+.dropdown_style {
+    border: none;
+    border-top: 2px solid #DDABA0;
+    background-color: white;
+    border-radius: 0;
+    text-align: left;
+    -webkit-box-shadow: 0 2px 10px -2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px -2px rgba(0, 0, 0, 0.1);
+    padding: 0px 0;
+    margin-top: 10px;
+    margin-left: 0px;
+    -webkit-transition: 0.3s 0s;
+    -o-transition: 0.3s 0s;
+    transition: 0.3s ease;
+}
+
+.dropdown-item:hover {
+    font-weight: bold;
+}
+
+#thankColume {
+    margin-top: 50px;
+    width: 700px;
+    padding: 40px;
+    box-shadow: 10px 20px 30px rgba(185, 185, 185, 0.607);
+    border-style: solid;
+    border-color: #dddddd;
+    background-color:whitesmoke
+}
+
+
+/* 保健品分析結果 */
+#ananlyze_result {
+    padding: 100px;
+    position:relative
+    display:flex
+    align-items:center
+}

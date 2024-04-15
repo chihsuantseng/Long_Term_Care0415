@@ -1,0 +1,129 @@
+﻿@model Long_Term_Care.Models.CareRecord
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<link rel="stylesheet" href="~/css/CareRecord/css/addForm.css" asp-append-version="true">
+<div id="add_record" class="container">
+    <h1>個案照護新增表單</h1>
+    <hr />
+    <form asp-action="Create">
+        <div id="record_form">
+            <div id="_hidden">
+                <div class="form-group">
+                    <label asp-for="ReserveId" class="control-label"></label>
+                    <select asp-for="ReserveId" class="form-control" asp-items="ViewBag.ReserveId"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MemberId" class="control-label"></label>
+                    <select asp-for="MemberId" class="form-control" asp-items="ViewBag.MemberId"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="EmployeeId" class="control-label"></label>
+                    <select asp-for="EmployeeId" class="form-control" asp-items="ViewBag.EmployeeId"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="EmployeeName" class="control-label"></label>
+                    <input asp-for="EmployeeName" class="form-control" />
+                    <span asp-validation-for="EmployeeName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CaseId" class="control-label"></label>
+                    <select asp-for="CaseId" class="form-control" asp-items="ViewBag.CaseId"></select>
+                </div>
+            </div>
+            <div id="first_row">
+                <div id="_rowname" class="form-group">
+                    <label asp-for="CaseName" class="control-label _label">姓名</label>
+                    <input asp-for="CaseName" id="_name" class="form-control" readonly />
+                    <span asp-validation-for="CaseName" class="text-danger"></span>
+                </div>
+
+                <div id="_rowdate" class="form-group">
+                    <label asp-for="RecordDate" class="control-label _label">日期</label>
+                    <input asp-for="RecordDate" id="_date" class="form-control" readonly />
+                    <span asp-validation-for="RecordDate" class="text-danger"></span>
+                </div>
+                <div id="_rowtime" class="form-group">
+                    <label asp-for="RecordTime" class="control-label _label">時間</label>
+                    <input asp-for="RecordTime" id="_time" class="form-control" readonly />
+                    <span class="text-danger"></span>
+                </div>
+            </div>
+            <div id="two_row">
+                <div class="form-group">
+                    <label asp-for="Temperature" class="control-label _label">體溫</label>
+                    <input asp-for="Temperature" id="_temperature" class="form-control" step="0.1"
+                           onchange="tempRange(this)" /><span>°C</span>
+                    <span asp-validation-for="Temperature" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Heartbeat" class="control-label _label">心跳</label>
+                    <input asp-for="Heartbeat" id="heart_beat" class="form-control" step="1"
+                           onchange="heartRange(this)" /><span>次/分</span>
+                    <span asp-validation-for="Heartbeat" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Breathe" class="control-label _label">呼吸</label>
+                    <input asp-for="Breathe" id="_breathe" class="form-control" step="1"
+                           onchange="breaRange(this)" /><span>次/分</span>
+                    <span asp-validation-for="Breathe" class="text-danger"></span>
+                </div>
+            </div>
+            <div id="three_row">
+                <label class="_label">血糖</label>
+                <div class="form-group">
+                    <label asp-for="BefGlucose" class="control-label _sugar">用餐前</label>
+                    <input asp-for="BefGlucose" id="bef_meal" class="form-control" onchange="befRange(this)" />
+                    <span asp-validation-for="BefGlucose" class="text-danger"></span><span id="_mgdl">mg/dl</span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AftGlucose" class="control-label _sugar">用餐後</label>
+                    <input asp-for="AftGlucose" id="aft_meal" class="form-control" onchange="aftRange(this)" />
+                    <span asp-validation-for="AftGlucose" class="text-danger"></span><span>mg/dl</span>
+                </div>
+            </div>
+
+            <div id="four_row">
+                <label class="_label">血壓</label>
+                <div class="form-group">
+                    <label asp-for="Sbp" class="control-label _pressure">收縮壓</label>
+                    <input asp-for="Sbp" id="_systolic" class="form-control" onchange="sbpRange(this)" />
+                    <span asp-validation-for="Sbp" class="text-danger"></span><span id="_mmhg">mmHg</span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Dbp" class="control-label _pressure">舒張壓</label>
+                    <input asp-for="Dbp" id="_diastolic" class="form-control" onchange="dbpRange(this)" />
+                    <span asp-validation-for="Dbp" class="text-danger"></span><span>mmHg</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Memo" class="control-label _label">其他事項</label>
+                <textarea asp-for="Memo" id="_others" class="form-control" placeholder="例：管灌飲食狀況、換尿布時間...等" /></textarea>
+                <span asp-validation-for="Memo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="送出" class="btn btn-success btn-lg" />
+            </div>
+        </div>
+    </form>
+    <br />
+   @*  <div>
+        <a asp-action="Index" id="view_care">**查看照護紀錄**</a>
+    </div> *@
+    <br />
+    <div>
+        <a asp-controller=AppointmentForms asp-action="Index" id="back_page">回上一頁</a>
+    </div>
+    <br />
+</div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="~/css/CareRecord/js/addForm.js"></script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,148 @@
+﻿@model Long_Term_Care.Models.Gservice
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link rel="stylesheet" href="~/css/Gspread/css/gspread.css" asp-append-version="true">
+<style>
+    #gcasename {
+        font-size: 22px;
+    }
+</style>
+
+<form asp-action="Edit">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="GplanId" />
+    <div class="form-group" id="memberid">
+        <label asp-for="MemberId" class="control-label"></label>
+        <select asp-for="MemberId" class="form-control" asp-items="ViewBag.MemberId"></select>
+        <span asp-validation-for="MemberId" class="text-danger"></span>
+    </div>
+    <div class="form-group" id="caseid">
+        <label asp-for="CaseId" class="control-label"></label>
+        <select asp-for="CaseId" class="form-control" asp-items="ViewBag.CaseId"></select>
+        <span asp-validation-for="CaseId" class="text-danger"></span>
+    </div>
+    <div id="golddate">@Html.DisplayFor(model => model.Gdate)</div>
+
+    <div id="g_spreadsheet" class="container">
+        <h1 id="g_spread">喘息服務試算</h1>
+        <span id="g_spr">日期：</span><input type="date" asp-for="Gdate" class="form-control" id="g_date" readonly />&nbsp;&nbsp;&nbsp;<span id="g_usetotal">前次累計使用額度：0</span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="g_addown">前次累計自費額：<span id="grownexp">@Html.DisplayFor(model => model.Gownexp)</span></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="gcasename"></span>
+        <br><br>
+        <div id="g_back">
+            <h3>喘息服務G碼</h3>
+            <div class="table-responsive">
+                <table id="_table2" class="table table-striped">
+                    <thead>
+                        <tr class="table-light">
+                            <td>CMS等級</td>
+                            <td>
+                                <select class="g_ranged" onchange="Gallowance(this)" id="gsel_ran" asp-for="Gcms" value=" @Html.DisplayFor(model => model.Gcms)">
+                                    <option value="0">第一級</option>
+                                    <option value="32420">第二級</option>
+                                    <option value="32420">第三級</option>
+                                    <option value="32420">第四級</option>
+                                    <option value="32420">第五級</option>
+                                    <option value="32420">第六級</option>
+                                    <option value="48510">第七級</option>
+                                    <option value="48510">第八級</option>
+                                </select>
+                                <input asp-for="GcmsRanged" class="form-control" id="gcmsranged" readonly />
+                            </td>
+                            <td>戶別</td>
+                            <td>
+                                <select class="g_typepay" onchange="Gupdatetwo(this)">
+                                    <option value="0.16">一般戶</option>
+                                    <option value="0.05">中低收入戶</option>
+                                    <option value="0.0">低收入戶</option>
+                                </select>
+                            </td>
+                            <td>每年補助額度上限</td>
+                            <td class="g_allprice" id="gAllprice"> @Html.DisplayFor(model => model.Gcms)</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-danger">
+                            <th></th>
+                            <th>服務項目</th>
+                            <th>單價</th>
+                            <th>實際支付比率</th>
+                            <th>次數</th>
+                            <th>支付小計</th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td id="g_service">GA09居家喘息服務</td>
+                            <td id="g_seven">770</td>
+                            <td class="g_realpay">0.16</td>
+                            <td>
+                                <input type="number" class="g_quantity" id="g_quan" value="0" min="0"
+                                       oninput="GupdateSubtotal(this)">
+                            </td>
+                            <td class="g_subtotal">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div id="g_addtotal" class="form-group">當月累計總額(單價*次數)：<input asp-for="Gaddtotal" class="form-control" id="gAddtotal" readonly /></div>
+            <div id="g_alltotal" class="form-group">補助剩餘額度：<input asp-for="Gbalnum" class="form-control" id="gBalnum" readonly /></div>
+            <div id="g_ownexp" class="form-group">超出額度應自費額：<span id="gOwnexp">0</span></div>
+            <div class="form-group" id="ghidd_en">
+                <label asp-for="Gownexp" class="control-label"></label>
+                <input asp-for="Gownexp" class="form-control" id="gowndata" readonly />
+                <span asp-validation-for="Gownexp" class="text-danger"></span>
+            </div>
+
+            <div id="g_totalpay">總支付金額：$0</div>
+            <hr>
+
+
+            @* <button type="button" onclick="gdeleted()" class="btn btn-secondary btn-lg">清除試算資料</button> *@
+
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-lg" id="g_save" style="float:right;">儲存，下一步</button>
+            </div>
+            <!-- <button type="button" onclick="gchecked()" class="btn">檢查試算資料</button> -->
+            <br><br>
+            <h6>※支付小計=單價*實際支付比率*次數</h6>
+            <h6>※補助已使用額度=單價*次數</h6>
+            <h6>※補助剩餘額度=補助額上限-補助已使用額度</h6>
+            <h6>※超出額度應自費額=(累計總額-補助額上限)*(1-比率)-前次累計自費額</h6>
+            <br>
+
+        </div>
+    </div>
+
+
+
+
+</form>
+
+
+
+
+
+@* <div>
+    <a asp-action="Index">Back to List</a>
+</div>
+ *@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="~/css/Gspread/js/gspread1.js"></script>
+<script src="~/css/Gspread/js/gspread2.js"></script>
+<script>
+    var gcasename = "gname";
+    var casedata = localStorage.getItem(gcasename);
+    var cadata = JSON.parse(casedata);
+    document.getElementById("gcasename").innerText = cadata;
+</script>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,60 @@
+﻿@model Long_Term_Care.Models.Bservice
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Bservice</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Bdate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Bdate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Addtotal)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Addtotal)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Balnum)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Balnum)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ownexp)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ownexp)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CmsRanged)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CmsRanged)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cms)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cms)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Member)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Member.MemberId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.BplanId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

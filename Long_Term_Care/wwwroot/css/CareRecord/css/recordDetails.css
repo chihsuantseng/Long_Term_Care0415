@@ -1,0 +1,59 @@
+﻿@media (min-width: 1024px) {
+    .text-success {
+        font-size: 28px;
+    }
+
+    #record_form {
+        width: 60%;
+        margin-top: 1%;
+    }
+
+    #rec_table {
+        font-size: 24px;
+    }
+    #page_back {
+        font-size: 20px;
+        border-bottom: 1px #000 solid;
+    }
+    .in_center{
+        text-align: center;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    .text-success {
+        font-size: 28px;
+    }
+
+    #record_form {
+        width: 80%;
+        margin-top: 1%;
+    }
+
+    #rec_table {
+        font-size: 24px;
+    }
+    #page_back {
+        font-size: 20px;
+        border-bottom: 1px #000 solid;
+    }
+}
+
+@media (max-width: 767px) {
+    .text-success {
+        font-size: 28px;
+    }
+
+    #record_form {
+        margin-top: 1%;
+    }
+
+    #rec_table {
+        font-size: 24px;
+    }
+    #page_back {
+        font-size: 20px;
+        border-bottom: 1px #000 solid;
+    }
+}

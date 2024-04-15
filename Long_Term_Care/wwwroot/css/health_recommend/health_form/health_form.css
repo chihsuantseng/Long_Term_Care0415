@@ -1,0 +1,31 @@
+﻿/* 已選中的 radio 的樣式 */
+input[type="radio"]:checked + label {
+    background-color: #28a745; /* 修改為你想要的顏色 */
+    color: white;
+}
+
+input[type="checkbox"]:checked + label {
+    background-color: #28a745; /* 修改為你想要的顏色 */
+    color: white;
+}
+
+div.form-field input[type="radio"] {
+    display: none;
+}
+
+div.form-field input[type="checkbox"] {
+    display: none;
+}
+
+.with-icon fieldset .answer {
+    display: flex; /* 使用 Flexbox 使元素水平排列 */
+    flex-direction: row; /* 將元素橫向排列 */
+}
+
+    .with-icon fieldset .answer .radiowrapper {
+        margin-right: 10px;
+    }
+
+    .with-icon fieldset .answer .checkboxwrapper {
+        margin-right: 10px;
+    }

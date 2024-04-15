@@ -1,0 +1,619 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:400,700");
+
+/* 整體內容區塊 */
+._content {
+    margin-bottom: 10rem;
+}
+
+.banner_img {
+    max-width: 100%;
+}
+
+
+
+/* 第一組內容區塊標題 「找馨安，最安心」 */
+.first_title_mg {
+    margin-top: 5rem;
+}
+
+.first_title_container {
+    display: flex;
+    align-items: center;
+}
+
+.first_title_font::before {
+    content: "";
+    display: inline-block;
+    width: 100px;
+    height: 3px;
+    background-color: #DDABA0;
+    margin-right: 30px;
+    margin-bottom: 11px;
+}
+
+.first_title_font {
+    font-weight: 500;
+    font-family: "Noto Sans TC", sans-serif;
+}
+
+
+
+/* 第一組內容的圖片 */
+.img_feed {
+    border-radius: 50px;
+    box-shadow: 3px 3px 12px gray;
+    padding: 3px;
+}
+
+/* 第一組內容的文字 */
+.protxt_padding {
+    padding: 10px 0 0 100px;
+}
+
+._professional {
+    color: navy;
+    font-family: "Noto Sans TC", sans-serif;
+    border-bottom: 1px solid navy;
+    padding-bottom: 10px;
+}
+
+._professional_intro {
+    color: navy;
+    font-family: "Noto Sans TC", sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.caretxt_padding {
+    padding: 0px 0 0 100px;
+}
+
+._care {
+    color: navy;
+    font-family: "Noto Sans TC", sans-serif;
+    border-bottom: 1px solid navy;
+    padding-bottom: 10px;
+}
+
+.care_intro {
+    color: navy;
+    font-family: "Noto Sans TC", sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+
+
+/* 第二組內容區塊標題 「專業照服派遣」 */
+.second_title_mg {
+    margin-top: 13rem;
+}
+
+.second_title_container {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.second_title_font::before {
+    content: "";
+    display: inline-block;
+    width: 100px;
+    height: 3px;
+    background-color: #DDABA0;
+    margin-right: 30px;
+    margin-bottom: 11px;
+}
+
+.second_title_font {
+    font-weight: 500;
+    font-family: "Noto Sans TC", sans-serif;
+}
+
+/* 第二組內容的圖片 */
+.img_help {
+    border-radius: 50px;
+    box-shadow: 3px 3px 12px gray;
+    padding: 3px;
+}
+
+/* 第二組內容的文字 */
+.patiencetxt_padding {
+    padding: 15px 100px 0 0;
+}
+
+._patience {
+    color: navy;
+    font-family: "Noto Sans TC", sans-serif;
+    border-bottom: 1px solid navy;
+    padding-bottom: 10px;
+}
+
+.patience_intro {
+    color: navy;
+    font-family: "Noto Sans TC", sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.securetxt_padding {
+    padding: 30px 100px 0 0;
+}
+
+._secure {
+    color: navy;
+    font-family: "Noto Sans TC", sans-serif;
+    border-bottom: 1px solid navy;
+    padding-bottom: 10px;
+}
+
+.secure_intro {
+    color: navy;
+    font-family: "Noto Sans TC", sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+
+
+/* 第三組內容區塊標題 「與馨安有有效溝通」 */
+.third_title_mg {
+    margin-top: 13rem;
+}
+
+.third_title_container {
+    display: flex;
+    align-items: center;
+}
+
+.third_title_font::before {
+    content: "";
+    display: inline-block;
+    width: 100px;
+    height: 3px;
+    background-color: #DDABA0;
+    margin-right: 30px; /* 距離標題的間距 */
+    margin-bottom: 11px;
+}
+
+.third_title_font {
+    font-weight: 500;
+    font-family: "Noto Sans TC", sans-serif;
+}
+
+.effitxt_padding {
+    padding: 10px 0 0 100px;
+}
+
+._efficiency {
+    color: navy;
+    font-family: "Noto Sans TC", sans-serif;
+    border-bottom: 1px solid navy;
+    padding-bottom: 10px;
+}
+
+.efficiency_intro {
+    color: navy;
+    font-family: "Noto Sans TC", sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.commutxt_padding {
+    padding: 10px 0 0 100px;
+}
+
+._communication {
+    color: navy;
+    font-family: "Noto Sans TC", sans-serif;
+    border-bottom: 1px solid navy;
+    padding-bottom: 10px;
+}
+
+.communication_intro {
+    color: navy;
+    font-family: "Noto Sans TC", sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+/* 第三組內容的圖片 */
+.img_blood {
+    border-radius: 50px;
+    box-shadow: 3px 3px 12px gray;
+    padding: 3px;
+}
+
+
+
+/* 第四組內容區塊標題 「暖心見證」 */
+.fourth_title_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 13rem;
+}
+
+.fourth_title_font::before {
+    content: "";
+    display: inline-block;
+    width: 200px;
+    height: 3px;
+    background-color: #DDABA0;
+    margin-right: 30px;
+    margin-bottom: 11px;
+}
+
+.fourth_title_font::after {
+    content: "";
+    display: inline-block;
+    width: 200px;
+    height: 3px;
+    background-color: #DDABA0;
+    margin-left: 30px;
+    margin-bottom: 11px;
+}
+
+.fourth_title_font {
+    font-weight: 500;
+    font-family: "Noto Sans TC", sans-serif;
+}
+
+
+/* 圖文互動的容器區塊 */
+.sweet_heart {
+    margin-top: 4rem;
+    justify-content: center;
+}
+
+/* 互動圖文卡整體區塊 */
+._wrap {
+    max-width: 100%;
+    /* display: flex; */
+    /* margin: auto; */
+    align-items: center;
+}
+
+    /* 三張互動圖文卡區塊 */
+    ._wrap ._item {
+        width: 370px;
+        margin: 15px;
+        text-align: center;
+        background-color: #fcfcfc;
+        transform: translateY(0px);
+        transition: 0.5s;
+        border-bottom-left-radius: 50px;
+        border-bottom-right-radius: 50px;
+        box-shadow: 3px 3px 12px gray;
+    }
+
+        /* 互動圖文卡hover效果 Y軸上移*/
+        ._wrap ._item:hover {
+            transform: translateY(-50px);
+        }
+
+            /* 互動圖文卡hover偽元素效果 */
+            ._wrap ._item:hover .txt_area::before {
+                border-left: 185px solid #feb85d;
+                border-right: 185px solid #feb85d;
+            }
+
+            ._wrap ._item:hover .txt_area {
+                background-image: linear-gradient(0deg, #fb8076, #feb85d);
+                border-bottom-left-radius: 50px;
+                border-bottom-right-radius: 50px;
+            }
+
+            ._wrap ._item:hover h2 {
+                color: #fff;
+                border-bottom-color: #fcfcfc;
+            }
+
+            ._wrap ._item:hover p {
+                color: #fff;
+            }
+
+        /* 互動圖文卡圖片 */
+        ._wrap ._item img {
+            width: 100%;
+            /* max-width: 100%; */
+            vertical-align: middle;
+        }
+
+        /* 互動圖文卡文字內容 */
+        ._wrap ._item .txt_area {
+            padding: 1.35rem;
+            position: relative;
+        }
+
+            ._wrap ._item .txt_area::before {
+                content: "";
+                position: absolute;
+                width: 0;
+                height: 0;
+                left: 0;
+                top: 0;
+                border-top: 60px solid transparent;
+                border-left: 185px solid #fcfcfc;
+                border-right: 185px solid #fcfcfc;
+                transform: translateY(-100%);
+            }
+
+            ._wrap ._item .txt_area h2 {
+                border-bottom: 1px solid #888;
+                padding-bottom: 0.3em;
+                margin-bottom: 0.4rem;
+                font-weight: 700;
+                transition: 0.25s;
+            }
+
+            ._wrap ._item .txt_area p {
+                line-height: 1.5;
+                text-align: justify;
+                font-weight: 300;
+                transition: 0.25s;
+                font-size: 20px;
+            }
+
+
+
+/* 第五區塊內容的標題 */
+.fifth_title_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 13rem;
+}
+
+.fifth_title_font::before {
+    content: "";
+    display: inline-block;
+    width: 200px;
+    height: 3px;
+    background-color: #DDABA0;
+    margin-right: 30px;
+    margin-bottom: 11px;
+}
+
+.fifth_title_font::after {
+    content: "";
+    display: inline-block;
+    width: 200px;
+    height: 3px;
+    background-color: #DDABA0;
+    margin-left: 30px;
+    margin-bottom: 11px;
+}
+
+.fifth_title_font {
+    font-weight: 500;
+    font-family: "Noto Sans TC", sans-serif;
+}
+
+
+/* 症狀與藥品圖文 */
+
+.symptom_mg {
+    margin-top: 4rem;
+}
+
+figure._symptom {
+    font-family: 'Josefin Sans', Arial, sans-serif;
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+    /* min-width: 500px; */
+    /* max-width: 100%; */
+    /* width: 100%; */
+    background: #000000;
+    text-align: left;
+    color: #ffffff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    font-size: 18px;
+}
+
+    figure._symptom * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-transition: all 0.4s ease-out;
+        transition: all 0.4s ease-out;
+    }
+
+    figure._symptom img {
+        max-width: 100%;
+        vertical-align: top;
+        position: relative;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+    }
+
+        figure._symptom img:first-of-type {
+            -webkit-filter: grayscale(100%);
+            filter: grayscale(100%);
+            opacity: 0.25;
+        }
+
+        figure._symptom img:nth-of-type(2) {
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            z-index: 1;
+        }
+
+    figure._symptom figcaption {
+        background-color: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 15px 20px;
+    }
+
+        figure._symptom figcaption h3,
+        figure._symptom figcaption p {
+            margin: 0 0 5px;
+        }
+
+        figure._symptom figcaption h3 {
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+            figure._symptom figcaption h3 span {
+                font-weight: 400;
+            }
+
+        figure._symptom figcaption p {
+            opacity: 0.8;
+        }
+
+    figure._symptom a {
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        position: absolute;
+        z-index: 2;
+    }
+
+    figure._symptom:hover img,
+    figure._symptom.hover img {
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+
+/* ----------------- RWD ----------------- */
+@media (min-width:900px) {
+    /* 寬度大於900時，圖往內縮3rem */
+    ._pdl {
+        padding-left: 3rem;
+    }
+
+    ._pdr {
+        padding-right: 3rem;
+    }
+
+    /* 第二組內容區塊 */
+    .second_txt_container {
+        margin-top: 3rem;
+    }
+}
+
+/* 互動圖文卡的RWD設置 */
+@media screen and (max-width: 900px) {
+    ._wrap {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media (max-width:767px) {
+    /* 第一區塊「找馨安，最安心」RWD */
+    .first_title_mg {
+        margin-top: 2rem;
+    }
+
+    .protxt_padding {
+        padding: 30px 0 0 0;
+    }
+
+    .caretxt_padding {
+        padding: 30px 0 0 0;
+    }
+
+    /* 第二區塊「專業派遣服務」RWD */
+    .second_title_mg {
+        margin-top: 6rem;
+    }
+
+    .second_title_container {
+        justify-content: start;
+    }
+
+    .patiencetxt_padding {
+        padding: 30px 0 0 0;
+    }
+
+    .securetxt_padding {
+        padding: 30px 0 0 0;
+    }
+
+
+
+    /* 第三區塊「與馨安的有效溝通 */
+    .third_title_mg {
+        margin-top: 8rem;
+    }
+
+    .effitxt_padding {
+        padding: 30px 0 0 0;
+    }
+
+    .commutxt_padding {
+        padding: 30px 0 0 0;
+    }
+}
+
+/* 第四區塊「暖心見證」RWD */
+@media (max-width: 767px) {
+    .fourth_title_container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 8rem;
+    }
+
+    .fourth_title_font::before {
+        content: "";
+        display: inline-block;
+        width: 100px;
+        height: 3px;
+        background-color: #DDABA0;
+        margin-right: 30px;
+        margin-bottom: 11px;
+    }
+
+    .fourth_title_font::after {
+        content: "";
+        display: inline-block;
+        width: 100px;
+        height: 3px;
+        background-color: #DDABA0;
+        margin-left: 30px;
+        margin-bottom: 11px;
+    }
+
+    /* 第五區塊「是否有以下困擾」RWD */
+    .fifth_title_container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 8rem;
+    }
+
+    .fifth_title_font::before {
+        content: "";
+        display: inline-block;
+        width: 75px;
+        height: 3px;
+        background-color: #DDABA0;
+        margin-right: 10px;
+        margin-bottom: 11px;
+    }
+
+    .fifth_title_font::after {
+        content: "";
+        display: inline-block;
+        width: 75px;
+        height: 3px;
+        background-color: #DDABA0;
+        margin-left: 10px;
+        margin-bottom: 11px;
+    }
+}

@@ -1,0 +1,565 @@
+﻿@using Long_Term_Care.Models.health
+@model Health_forms_text
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/danbars/form-builder@0.1/dist/themes/default.imports.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/danbars/form-builder@0.1/dist/themes/default.css">
+<script src="/css/health_recommend/health_form/health_for_start.js" defer></script>
+<link rel="stylesheet" href="/css/health_recommend/health_form/health_form.css">
+*@{
+	ViewBag.Title = "我適合補充什麼？";
+	Layout = "_LayoutHealth";
+}
+<div id="form" class="fb-theme-default container">
+	<form id="healthForm" asp-controller="HealthForm" asp-action="health_form" method="POST" autocomplete="on">
+		<section class="text-center">
+			<h1>綜合健康評估</h1>
+			<h3 class="mt-1">完成評估需時約3分鐘</h3>
+			<h3 class="mt-1">針對問卷裡您所提供的所有資訊  都只會針對網站內部分析使用</h3>
+			<button id="startButton" class="btn btn-outline-primary">
+				本人  同意馨安的私隱政策及 同意使用條款 並開始評估
+			</button>
+			<a class="btn btn-outline-secondary m-4" role="button" asp-area="" asp-controller="Health" asp-action="health_recommend">本人不同意</a>
+			<h3 class="mt-1">每題請務必勾選!</h3>
+		</section>
+		<div id="question" style="display:none;">
+			<!-- 個人資料 -->
+			<section>
+				<h2>個人資料</h2>
+				<!-- 姓名 -->
+				<div class="form-field form-text  required">
+					<label for="name78">姓名<abbr class="required" title="required">*</abbr></label>
+					<div class="input-wrapper with-icon">
+						<input type="text" asp-for="Name" id="name" name="name" class="form-control form-control-lg w-50" required placeholder="請輸入姓名" />
+						<i class="fas fa-user-tie" aria-hidden="true"></i>
+					</div>
+				</div>
+				<!-- 年紀 -->
+				<div class="form-field form-radio required">
+					<div class="input-wrapper with-icon ">
+						<fieldset class="p-3">
+							<legend>
+								<i class="fas fa-birthday-cake" aria-hidden="true"
+								   style="color: #FFD43B;"></i>年齡<abbr class="required" title="required">*</abbr>
+							</legend>
+							<div class="answer">
+								<div class="radiowrapper">
+									<input type="radio" name="age" value="<30" id="age0">
+									<label for="age0" class="btn btn-outline-primary">30以下</label>
+								</div>
+								<div class="radiowrapper">
+									<input type="radio" name="age" value="30-40" id="age1">
+									<label for="age1" class="btn btn-outline-primary">30-40</label>
+								</div>
+								<div class="radiowrapper">
+									<input type="radio" name="age" value="40-50" id="age2">
+									<label for="age2" class="btn btn-outline-primary">40-50</label>
+								</div>
+								<div class="radiowrapper">
+									<input type="radio" name="age" value="50-60" id="age3">
+									<label for="age3" class="btn btn-outline-primary">50-60</label>
+								</div>
+								<div class="radiowrapper">
+									<input type="radio" name="age" value=">60" id="age4">
+									<label for="age4" class="btn btn-outline-primary">60以上</label>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+				<!-- 性別 -->
+				<div class="form-field form-radio required">
+					<div class="input-wrapper with-icon">
+						<fieldset class="p-3">
+							<legend>
+								<i class="fas fa-venus-mars" aria-hidden="true"
+								   style="color: #FFD43B;"></i>請選擇您的生理性別<abbr class="required" title="required">*</abbr>
+							</legend>
+							<div class="answer">
+								<div class="radiowrapper">
+									<input type="radio" name="gender" value="man" id="gender11">
+									<label for="gender11" class="btn btn-outline-success">男性</label>
+								</div>
+								<div class="radiowrapper">
+									<input type="radio" name="gender" value="woman" id="gender12">
+									<label for="gender12" class="btn btn-outline-success">女性</label>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+				<!-- 身高 -->
+				<div class="d-flex">
+					<div class="form-field form-text flex-fill required">
+						<label for="bmi_height">身高<abbr class="required" title="required">*</abbr></label>
+						<div class="input-wrapper with-icon">
+							<input asp-for="Height" id="bmi_height" name="Height" class="form-control form-control-lg w-75" required placeholder="請輸入您的身高(CM)">
+							<i class="fas fa-user" aria-hidden="true"></i>
+						</div>
+						<p>我們會根據您的BMI體重指標表提供適合您的方案</p>
+					</div>
+					<!-- 體重 -->
+					<div class="form-field form-text flex-fill required">
+						<label for="bmi_weight">體重<abbr class="required" title="required">*</abbr></label>
+						<div class="input-wrapper with-icon">
+							<input asp-for="Weight" id="bmi_weight" name="Weight" class="form-control form-control-lg w-75" required placeholder="請輸入您的體重(KG)">
+							<i class="fas fa-user" aria-hidden="true"></i>
+						</div>
+						<p>我們會根據您的BMI體重指標表提供適合您的方案</p>
+					</div>
+				</div>
+				<!-- BMI -->
+				<fieldset class="p-3" style="display:none;">
+					<div class="radiowrapper">
+						<input type="radio" name="bmi" value="1" data-product="產品C" checked>
+					</div>
+				</fieldset>
+			</section>
+			<!-- 問卷區域-基礎 -->
+			<section>
+				<h2>生活習慣</h2>
+				<!-- 水果 -->
+				<div class="form-field form-radio required">
+					<div class="input-wrapper with-icon">
+						<fieldset class="p-3">
+							<legend>
+								<i class="fas fa-heart" aria-hidden="true"></i>您每星期平均進食幾份水果？<abbr class="required" title="required">*</abbr>
+							</legend>
+							<strong>每份水果約1個拳頭大(80克-150克)</strong>
+							<div class="answer mt-3">
+								<div class="radiowrapper">
+									<input type="radio" name="q1" value="1,產品C"
+										   id="fruit_1">
+									<label for="fruit_1" class="btn btn-outline-success">每星期14份以上</label>
+								</div>
+								<div class="radiowrapper">
+									<input type="radio" name="q1" value="50,產品酵素"
+										   id="fruit_2">
+									<label for="fruit_2" class="btn btn-outline-success">每星期7-14份</label>
+								</div>
+								<div class="radiowrapper">
+									<input type="radio" name="q1" value="100,產品酵素"
+										   id="fruit_none">
+									<label for="fruit_none" class="btn btn-outline-success">每星期少於7份</label>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+				<!-- 蔬菜 -->
+				<div class="form-field form-radio required">
+					<div class="input-wrapper with-icon">
+						<fieldset class="p-3">
+							<legend>
+								<i class="fas fa-heart" aria-hidden="true"></i>您每星期平均進食幾份蔬菜？<abbr class="required" title="required">*</abbr>
+							</legend>
+							<strong>每份約2/3碗烹煮過後把水分瀝乾的蔬菜(120克左右)</strong>
+							<div class="answer mt-3">
+								<div class="radiowrapper">
+									<input type="radio" name="q2" value="1,產品C"
+										   id="veget_1">
+									<label for="veget_1" class="btn btn-outline-success">每星期14份以上</label>
+								</div>
+								<div class="radiowrapper">
+									<input type="radio" name="q2" value="50,產品酵素"
+										   id="veget_2">
+									<label for="veget_2" class="btn btn-outline-success">每星期7-14份</label>
+								</div>
+								<div class="radiowrapper">
+									<input type="radio" name="q2" value="100,產品酵素"
+										   id="veget_none">
+									<label for="veget_none" class="btn btn-outline-success">每星期少於7份</label>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+				<!-- 魚肉 -->
+				<div class="form-field form-radio required">
+					<div class="input-wrapper with-icon">
+						<fieldset class="p-3">
+							<legend>
+								<i class="fas fa-heart" aria-hidden="true"></i>您每星期平均進食2份以上的含Omega-3的魚類？
+								<abbr class="required" title="required">*</abbr>
+							</legend>
+							<strong>黃魚,鮭魚,沙丁魚,鮪魚等，1份大約是一塊魚肉(80-120克左右)</strong>
+							<div class="answer mt-3">
+								<div class="radiowrapper">
+									<input type="radio" name="q3" value="1,產品C"
+										   id="fish_y">
+									<label for="fish_y" class="btn btn-outline-success">&nbsp&nbsp&nbsp是&nbsp&nbsp&nbsp</label>
+								</div>
+								<div class="radiowrapper">
+									<input type="radio" name="q3" value="70,產品魚油"
+										   id="fish_n">
+									<label for="fish_n" class="btn btn-outline-success">&nbsp&nbsp沒 有&nbsp&nbsp</label>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+				<!-- 飲酒 -->
+				<div class="form-field form-radio required">
+					<div class="input-wrapper with-icon">
+						<fieldset class="p-3">
+							<legend>
+								<i class="fas fa-heart" aria-hidden="true"></i>您的飲酒頻率？<abbr class="required" title="required">*</abbr>
+							</legend>
+							<strong>每份約1罐啤酒或1杯紅白酒或1shot盃的烈酒</strong>
+							<div class="answer mt-3">
+								<div class="radiowrapper">
+									<input type="radio" name="q4" value="70,產品B,70,產品鈣,100,產品紅麴" id="wine_1">
+									<label for="wine_1" class="btn btn-outline-success">每星期15份以上</label>
+								</div>
+								<div class="radiowrapper">
+									<input type="radio" name="q4" value="70,產品B,70,產品鈣,100,產品紅麴" id="wine_2">
+									<label for="wine_2" class="btn btn-outline-success">每星期9-14份</label>
+								</div>
+								<div class="radiowrapper">
+									<input type="radio" name="q4" value="50,產品B,50,產品鈣,70,產品紅麴" id="wine_3">
+									<label for="wine_3" class="btn btn-outline-success">每星期2-8份</label>
+								</div>
+								<div class="radiowrapper">
+									<input type="radio" name="q4" value="30,產品B,30,產品鈣,50,產品紅麴" id="wine_4">
+									<label for="wine_4" class="btn btn-outline-success">每星期0-1份</label>
+								</div>
+								<div class="radiowrapper">
+									<input type="radio" name="q4" value="1,產品C" id="wine_5">
+									<label for="wine_5" class="btn btn-outline-success">沒有飲酒習慣</label>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+				<!-- 抽菸 -->
+				<div class="form-field form-radio required">
+					<div class="input-wrapper with-icon">
+						<fieldset class="p-3">
+							<legend>
+								<i class="fas fa-heart" aria-hidden="true"></i>您的抽菸頻率？<abbr class="required" title="required">*</abbr>
+							</legend>
+							<strong>長期接觸二手菸環境，待8小時約等於每天半包菸</strong>
+							<div class="answer mt-3">
+								<div class="radiowrapper">
+									<input type="radio" name="q5" value="70,產品C,100,產品B,100,產品鈣"
+										   id="smoke_1">
+									<label for="smoke_1" class="btn btn-outline-success">每天1包以上</label>
+								</div>
+								<div class="radiowrapper">
+									<input type="radio" name="q5" value="50,產品C,70,產品B,70,產品鈣"
+										   id="smoke_2">
+									<label for="smoke_2" class="btn btn-outline-success">每天半包</label>
+								</div>
+								<div class="radiowrapper">
+									<input type="radio" name="q5" value="30,產品C,50,產品B,50,產品鈣"
+										   id="smoke_3">
+									<label for="smoke_3" class="btn btn-outline-success">每周1-2包</label>
+								</div>
+								<div class="radiowrapper">
+									<input type="radio" name="q5" value="1,產品C"
+										   id="smoke_4">
+									<label for="smoke_4" class="btn btn-outline-success">幾乎不抽菸或沒有抽菸習慣</label>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+				<!-- 運動規律 -->
+				<div class="form-field form-radio required">
+					<div class="input-wrapper with-icon">
+						<fieldset class="p-3">
+							<legend>
+								<i class="fas fa-heart" aria-hidden="true"></i>您每星期平均進行2節以上的運動？<abbr class="required" title="required">*</abbr>
+							</legend>
+							<strong>一節為30分鐘</strong>
+							<div class="answer mt-3">
+								<div class="radiowrapper">
+									<input type="radio" name="q6" value="50,產品鈣,50,產品UCII"
+										   id="exercise_y">
+									<label for="exercise_y" class="btn btn-outline-success">&nbsp&nbsp&nbsp是&nbsp&nbsp&nbsp</label>
+								</div>
+								<div class="radiowrapper">
+									<input type="radio" name="q6" value="50,產品紅麴,30,產品魚油"
+										   id="exercise_n">
+									<label for="exercise_n" class="btn btn-outline-success">&nbsp&nbsp沒 有&nbsp&nbsp</label>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+				<!-- 曬太陽 -->
+				<div class="form-field form-radio required">
+					<div class="input-wrapper with-icon">
+						<fieldset class="p-3">
+							<legend>
+								<i class="fas fa-heart" aria-hidden="true"></i>您每星期平均2天以上，有進行日曬十五分鐘嗎？<abbr class="required" title="required">*</abbr>
+							</legend>
+							<div class="answer">
+								<div class="radiowrapper">
+									<input type="radio" name="q7" value="1,產品C"
+										   id="sun15m_y">
+									<label for="sun15m_y" class="btn btn-outline-success">&nbsp&nbsp&nbsp是&nbsp&nbsp&nbsp</label>
+								</div>
+								<div class="radiowrapper">
+									<input type="radio" name="q7" value="100,產品D,100,產品鈣"
+										   id="sun15m_n">
+									<label for="sun15m_n" class="btn btn-outline-success">&nbsp&nbsp沒 有&nbsp&nbsp</label>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+			</section>
+			<!-- 問卷區域-進階 -->
+			<section>
+				<h2>身體狀況</h2>
+				<div class="form-field form-radio required">
+					<div class="input-wrapper with-icon">
+						<fieldset class="p-3">
+							<legend>
+								<i class="fas fa-heart" aria-hidden="true"></i>您經常性會有吃東西會刷牙時流血的狀況嗎？<abbr class="required" title="required">*</abbr>
+							</legend>
+							<strong>每個月1-2次</strong>
+							<div class="answer mt-3">
+								<div class="radiowrapper">
+									<input type="radio" name="q8" value="100,產品B,100,產品C"
+										   id="mouth_y">
+									<label for="mouth_y" class="btn btn-outline-success">&nbsp&nbsp&nbsp是&nbsp&nbsp&nbsp</label>
+								</div>
+								<div class="radiowrapper">
+									<input type="radio" name="q8" value="1,產品C"
+										   id="mouth_n">
+									<label for="mouth_n" class="btn btn-outline-success">&nbsp&nbsp沒 有&nbsp&nbsp</label>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+				<div class="form-field form-radio required">
+					<div class="input-wrapper with-icon">
+						<fieldset class="p-3">
+							<legend>
+								<i class="fas fa-heart" aria-hidden="true"></i>您每天平均睡眠時數低於6小時？<abbr class="required" title="required">*</abbr>
+							</legend>
+							<div class="answer">
+								<div class="radiowrapper">
+									<input type="radio" name="q9" value="100,產品B,100,產品魚油" id="seven_y">
+									<label for="seven_y" class="btn btn-outline-success">&nbsp&nbsp&nbsp是&nbsp&nbsp&nbsp</label>
+								</div>
+								<div class="radiowrapper">
+									<input type="radio" name="q9" value="1,產品C" id="seven_n">
+									<label for="seven_n" class="btn btn-outline-success">&nbsp&nbsp沒 有&nbsp&nbsp</label>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+				<div class="form-field form-radio required">
+					<div class="input-wrapper with-icon">
+						<fieldset class="p-3">
+							<legend>
+								<i class="fas fa-heart" aria-hidden="true"></i>您需要很長時間、依靠藥物或酒精才能入睡嗎？<abbr class="required" title="required">*</abbr>
+							</legend>
+							<div class="answer">
+								<div class="radiowrapper">
+									<input type="radio" name="q10" value="100,產品B,100,產品魚油" id="badsleep_y">
+									<label for="badsleep_y" class="btn btn-outline-success">&nbsp&nbsp&nbsp是&nbsp&nbsp&nbsp</label>
+								</div>
+								<div class="radiowrapper">
+									<input type="radio" name="q10" value="1,產品C" id="badsleep_n">
+									<label for="badsleep_n" class="btn btn-outline-success">&nbsp&nbsp沒 有&nbsp&nbsp</label>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+				<div class="form-field form-checkbox required">
+					<div class="input-wrapper with-icon">
+						<fieldset class="p-3">
+							<legend>
+								<i class="fas fa-heart" aria-hidden="true"></i>您有以下狀況嗎？<abbr class="required" title="required">*</abbr>
+							</legend>
+							<strong>這是複選，請選擇所有適用選項，若皆無請選擇沒有</strong>
+							<div class="answer mt-3">
+								<div class="checkboxwrapper">
+									<input type="checkbox" name="q11" value="100,產品鈣,70,產品D" id="bone_1">
+									<label for="bone_1" class="btn btn-outline-success">身高變矮</label>
+								</div>
+								<div class="checkboxwrapper">
+									<input type="checkbox" name="q11" value="70,產品鈣,70,產品D" id="bone_2">
+									<label for="bone_2" class="btn btn-outline-success">駝背</label>
+								</div>
+								<div class="checkboxwrapper">
+									<input type="checkbox" name="q11" value="100,產品鈣,70,產品D" id="bone_3">
+									<label for="bone_3" class="btn btn-outline-success">背部疼痛</label>
+								</div>
+								<div class="checkboxwrapper">
+									<input type="checkbox" name="q11" value="200,產品UCII" id="bone_4">
+									<label for="bone_4" class="btn btn-outline-success">上下樓梯吃力</label>
+								</div>
+								<div class="checkboxwrapper">
+									<input type="checkbox" name="q11" value="200,產品UCII" id="bone_5">
+									<label for="bone_5" class="btn btn-outline-success">關節緊繃</label>
+								</div>
+								<div class="checkboxwrapper">
+									<input type="checkbox" name="q11" value="100,產品UCII" id="bone_6">
+									<label for="bone_6" class="btn btn-outline-success">運動量大</label>
+								</div>
+								<div class="checkboxwrapper">
+									<input type="checkbox" name="q11" value="1,產品C" id="bone_7">
+									<label for="bone_7" class="btn btn-outline-success">&nbsp沒 有&nbsp</label>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+				<div class="form-field form-radio required">
+					<div class="input-wrapper with-icon">
+						<fieldset class="p-3">
+							<legend>
+								<i class="fas fa-heart" aria-hidden="true"></i>您的腸胃排便順暢、消化良好嗎？<abbr class="required" title="required">*</abbr>
+							</legend>
+							<div class="answer">
+								<div class="radiowrapper">
+									<input type="radio" name="q12" value="1,產品C" id="bad_digestion_y">
+									<label for="bad_digestion_y" class="btn btn-outline-success">&nbsp&nbsp&nbsp是&nbsp&nbsp&nbsp</label>
+								</div>
+								<div class="radiowrapper">
+									<input type="radio" name="q12" value="150,產品益生菌,150,產品酵素"
+										   id="bad_digestion_n">
+									<label for="bad_digestion_n" class="btn btn-outline-success">&nbsp&nbsp沒 有&nbsp&nbsp</label>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+				<div class="form-field form-radio required">
+					<div class="input-wrapper with-icon">
+						<fieldset class="p-3">
+							<legend>
+								<i class="fas fa-heart" aria-hidden="true"></i>您每天約排便一次？<abbr class="required" title="required">*</abbr>
+							</legend>
+							<div class="answer">
+								<div class="radiowrapper">
+									<input type="radio" name="q13" value="1,產品C"
+										   id="digestion_y">
+									<label for="digestion_y" class="btn btn-outline-success">&nbsp&nbsp&nbsp是&nbsp&nbsp&nbsp</label>
+								</div>
+								<div class="radiowrapper">
+									<input type="radio" name="q13" value="70,產品益生菌,70,產品酵素" id="digestion_n">
+									<label for="digestion_n" class="btn btn-outline-success">&nbsp&nbsp沒 有&nbsp&nbsp</label>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+				<div class="form-field form-checkbox required">
+					<div class="input-wrapper with-icon">
+						<fieldset class="p-3">
+							<legend>
+								<i class="fas fa-heart" aria-hidden="true"></i>您有以下問題嗎？<abbr class="required" title="required">*</abbr>
+							</legend>
+							<strong>這是複選，請選擇所有適用選項，若皆無請選擇沒有</strong>
+							<div class="answer mt-3">
+								<div class="checkboxwrapper">
+									<input type="checkbox" name="q14" value="200,產品鐵" id="disease_1">
+									<label for="disease_1" class="btn btn-outline-success">低血壓</label>
+								</div>
+								<div class="checkboxwrapper">
+									<input type="checkbox" name="q14" value="100,產品魚油,100,產品紅麴" id="disease_2">
+									<label for="disease_2" class="btn btn-outline-success">高血壓</label>
+								</div>
+								<div class="checkboxwrapper">
+									<input type="checkbox" name="q14" value="100,產品酵素,100,產品紅麴" id="disease_3">
+									<label for="disease_3" class="btn btn-outline-success">高血脂</label>
+								</div>
+								<div class="checkboxwrapper">
+									<input type="checkbox" name="q14" value="100,產品魚油,100,產品紅麴" id="disease_4">
+									<label for="disease_4" class="btn btn-outline-success">高血糖</label>
+								</div>
+								<div class="checkboxwrapper">
+									<input type="checkbox" name="q14" value="100,產品魚油,100,產品紅麴" id="disease_5">
+									<label for="disease_5" class="btn btn-outline-success">心臟疾病</label>
+								</div>
+								<div class="checkboxwrapper">
+									<input type="checkbox" name="q14" value="200,產品鐵" id="disease_6">
+									<label for="disease_6" class="btn btn-outline-success">貧血</label>
+								</div>
+								<div class="checkboxwrapper">
+									<input type="checkbox" name="q14" value="1,產品C" id="disease_none">
+									<label for="disease_none" class="btn btn-outline-success">&nbsp&nbsp沒 有&nbsp&nbsp</label>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+				<div class="form-field form-radio required">
+					<div class="input-wrapper with-icon">
+						<fieldset class="p-3">
+							<legend>
+								<i class="fas fa-heart" aria-hidden="true"></i>您目前是否有服用抗凝血藥？<abbr class="required" title="required">*</abbr>
+							</legend>
+							<strong>若服用Warfarin、阿司匹林（Aspirin）或其他類似藥物，須避免同時服用紅麴、魚油</strong>
+							<div class="answer mt-3">
+								<div class="radiowrapper">
+									<input type="radio" name="q15" value="-10000,產品魚油,-10000,產品紅麴" id="anticoagulant_y">
+									<label for="anticoagulant_y" class="btn btn-outline-success">&nbsp&nbsp&nbsp是&nbsp&nbsp&nbsp</label>
+								</div>
+								<div class="radiowrapper">
+									<input type="radio" name="q15" value="1,產品C"
+										   id="anticoagulant_n">
+									<label for="anticoagulant_n" class="btn btn-outline-success">&nbsp&nbsp沒 有&nbsp&nbsp</label>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+				<div class="form-field form-radio required">
+					<div class="input-wrapper with-icon">
+						<fieldset class="p-3">
+							<legend>
+								<i class="fas fa-heart" aria-hidden="true"></i>您有家族遺傳的心血管疾病嗎？<abbr class="required" title="required">*</abbr>
+							</legend>
+							<div class="answer">
+								<div class="radiowrapper">
+									<input type="radio" name="q16" value="150,產品紅麴"
+										   id="cardio_y">
+									<label for="cardio_y" class="btn btn-outline-success">&nbsp&nbsp&nbsp是&nbsp&nbsp&nbsp</label>
+								</div>
+								<div class="radiowrapper">
+									<input type="radio" name="q16" value="1,產品C"
+										   id="cardio_n">
+									<label for="cardio_n" class="btn btn-outline-success">&nbsp&nbsp沒 有&nbsp&nbsp</label>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+				<div class="form-field form-radio required">
+					<div class="input-wrapper with-icon">
+						<fieldset class="p-3">
+							<legend>
+								<i class="fas fa-heart" aria-hidden="true"></i>您最近是否容易感到疲倦？<abbr class="required" title="required">*</abbr>
+							</legend>
+							<div class="answer">
+								<div class="radiowrapper">
+									<input type="radio" name="q17" value="100,產品B,50,產品益生菌"
+										   id="tired_y">
+									<label for="tired_y" class="btn btn-outline-success">&nbsp&nbsp&nbsp是&nbsp&nbsp&nbsp</label>
+								</div>
+								<div class="radiowrapper">
+									<input type="radio" name="q17" value="1,產品C"
+										   id="tired_n">
+									<label for="tired_n" class="btn btn-outline-success">&nbsp&nbsp沒 有&nbsp&nbsp</label>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+			</section>
+			<section>
+				<h3>恭喜完成!按這邊看看你適合補充什麼~</h3>
+				<input class="btn" type="submit" value="分析結果" id="submit">
+			</section>
+		</div>
+	</form>
+</div>

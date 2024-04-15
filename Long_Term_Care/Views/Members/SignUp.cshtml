@@ -1,0 +1,151 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Long_Term_Care.Models.Member
+
+<link rel="stylesheet" href="/css/SignUp/SignUp.css" asp-append-version="true">
+<form class="row g-3 modal_content_sign needs-validation" asp-action="SignUp" method="post" novalidate>
+    <h1>會員註冊</h1>
+    <hr>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="col-md-6">
+        <label asp-for="UserName" for="inputAccount1" class="form-label"><b>*帳號：</b></label>
+        <input asp-for="UserName" type="text" class="form-control" id="inputAccount1" required />
+        <div class="invalid-feedback">
+            請輸入帳號
+        </div>
+        <span asp-validation-for="UserName" class="text-danger"></span>
+        <p>帳號只能是8-12英文、數字混合字元，其餘字元均不接受</p>
+
+    </div>
+    <div class="col-md-6">
+        <label class="control-label"><b>*密碼：</b></label>
+        <input type="Password" class="form-control" id="word1" required />
+        <p>至少 5 個位數以上的密碼長度</p>
+        <label asp-for="Password" class="control-label"><b>*確認密碼：</b></label>
+        <input asp-for="Password" type="Password" class="form-control " id="word2" required />
+        <div class="invalid-feedback">
+            請輸入密碼
+        </div>
+        <span asp-validation-for="Password" class="text-danger"></span>
+        <p>再輸入一次密碼，確認沒有打錯字</p>
+
+    </div>
+
+
+
+    <div class="col-md-6">
+        <label asp-for="MemberName" class="control-label"><b>*姓名：</b></label>
+        <input asp-for="MemberName" type="text" class="form-control" required />
+        <div class="invalid-feedback">
+            請輸入姓名
+        </div>
+        <span asp-validation-for="MemberName" class="text-danger "></span>
+
+    </div>
+    <div class="col-md-6">
+        <label asp-for="Email" class="control-label"><b>*信箱：</b></label>
+        <input asp-for="Email" type="text" class="form-control " id="inputemail" required />
+        <div class="invalid-feedback">
+            請輸入信箱
+        </div>
+        <span asp-validation-for="Email" class="text-danger"></span>
+        <p>請填寫Email。<br>（Yahoo、PChome等免費信箱較容易被阻擋，為保障您的權益，請避免使用）</p>
+
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="Gender" class="form-check-label"><b>*性別：</b></label><br />
+        <div class="form-check form-check-inline">
+            <input asp-for="Gender" class="form-check-input" type="radio" id="inlineCheckbox1" name="Gender" value="男性">
+            <label class="form-check-label" for="inlineCheckbox1">男性</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input asp-for="Gender" class="form-check-input" type="radio" id="inlineCheckbox2" name="Gender" value="女性">
+            <label class="form-check-label" for="inlineCheckbox2">女性</label>
+        </div>
+        <div class="invalid-feedback">
+            請選擇性別
+        </div>
+        <span asp-validation-for="Gender" class="text-danger"></span>
+
+
+
+    </div>
+
+
+    <div class="col-md-6">
+        <label asp-for="HomePhone" class="control-label"><b>市話：</b></label>
+        <input asp-for="HomePhone" type="text" class="form-control " required />
+        <div class="invalid-feedback">
+            請輸入市話
+        </div>
+        <span asp-validation-for="HomePhone" class="text-danger"></span>
+
+    </div>
+    <div class="col-md-6">
+        <label asp-for="MobilePhone" class="control-label"><b>*手機號碼：</b></label>
+        <input asp-for="MobilePhone" type="text" class="form-control " id="inputphone" required />
+        <div class="invalid-feedback">
+            請輸入手機號碼
+        </div>
+        <span asp-validation-for="MobilePhone" class="text-danger"></span>
+        <p>請填寫手機號碼，台灣以外地區，請填寫當地通訊電話</p>
+
+    </div>
+    <div class="col-md-6">
+        <label asp-for="City" class="control-label"><b>*城市：</b></label>
+        <input asp-for="City" type="text" class="form-control " required />
+        <div class="invalid-feedback">
+            請輸入城市
+        </div>
+        <span asp-validation-for="City" class="text-danger"></span>
+
+    </div>
+    <div class="col-md-6">
+        <label asp-for="District" class="control-label"><b>*地區：</b></label>
+        <input asp-for="District" type="text" class="form-control " required />
+        <div class="invalid-feedback">
+            請輸入地區
+        </div>
+        <span asp-validation-for="District" class="text-danger"></span>
+
+    </div>
+    <div class="col-md-6">
+        <label asp-for="Address" class="control-label"><b>*地址：</b></label>
+        <input asp-for="Address" type="text" class="form-control" required />
+        <div class="invalid-feedback">
+            請輸入地址
+        </div>
+        <span asp-validation-for="Address" class="text-danger"></span>
+
+    </div>
+    <div class="col-md-6">
+    </div>
+    <div class="col-12">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" checked="checked" id="sign_getnews">
+            <label class="form-check-label" for="sign_getnews">
+                我願意接收最新優惠消息及服務推廣資訊
+            </label>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="form-check">
+@*             <input class="form-check-input" type="checkbox" value="" id="sign_privacy">
+ *@            <label class="form-check-label" for="sign_privacy">
+                註冊視為同意 <a href="#" style="color:dodgerblue">本網站服務條款及隱私權政策</a>.
+            </label>
+        </div>
+    </div>
+    <div class="col-12 signbtn">
+        <!-- 要加入超連結轉跳 -->
+        <button class="btn btn-success signup_btn xdd1" type="submit" id="xdd2">註冊</button>
+        <a class="btn btn-danger cancel_btn xdd1" role="button" asp-action="LogIn">取消</a>
+    </div>
+</form>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script src="~/css/SignUp/SignUp.js"></script>
+

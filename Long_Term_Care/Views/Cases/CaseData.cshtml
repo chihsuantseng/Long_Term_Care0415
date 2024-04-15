@@ -1,0 +1,104 @@
+﻿@model Long_Term_Care.Models.Case
+<link rel="stylesheet" href="~/css/CaseData/css/CaseData.css" />
+
+<div class="container mt-4">
+	<h1 class="case_title">個案資料</h1>
+	<hr />
+	<dl class="row row_dl">
+		<dt class="col-sm-4 table_dt">
+			姓名：
+		</dt>
+		<dd class="col-sm-8 table_dd">
+			@Html.DisplayFor(model => model.CaseName)
+		</dd>
+
+		<dt class="col-sm-4 table_dt">
+			性別：
+		</dt>
+		<dd class="col-sm-8 table_dd">
+			@Html.DisplayFor(model => model.Gender)
+		</dd>
+
+		<dt class="col-sm-4 table_dt">
+			生日：
+		</dt>
+		<dd class="col-sm-8 table_dd">
+			@Html.DisplayFor(model => model.Birthdate)
+		</dd>
+
+		<dt class="col-sm-4 table_dt">
+			年齡：
+		</dt>
+		<dd class="col-sm-8 table_dd">
+			@Html.DisplayFor(model => model.Age)
+		</dd>
+
+		<dt class="col-sm-4 table_dt">
+			身份證字號：
+		</dt>
+		<dd class="col-sm-8 table_dd">
+			@Html.DisplayFor(model => model.IdentificationNumber)
+		</dd>
+
+		<dt class="col-sm-4 table_dt">
+			身份類別：
+		</dt>
+		<dd class="col-sm-8 table_dd">
+			@Html.DisplayFor(model => model.IdentityType)
+		</dd>
+
+		<dt class="col-sm-4 table_dt">
+			聯絡電話：
+		</dt>
+		<dd class="col-sm-8 table_dd">
+			@Html.DisplayFor(model => model.CasePhone)
+		</dd>
+
+		<dt class="col-sm-4 table_dt">
+			城市：
+		</dt>
+		<dd class="col-sm-8 table_dd">
+			@Html.DisplayFor(model => model.City)
+		</dd>
+
+		<dt class="col-sm-4 table_dt">
+			地區：
+		</dt>
+		<dd class="col-sm-8 table_dd">
+			@Html.DisplayFor(model => model.District)
+		</dd>
+
+		<dt class="col-sm-4 table_dt">
+			地址：
+		</dt>
+		<dd class="col-sm-8 table_dd">
+			@Html.DisplayFor(model => model.Address)
+		</dd>
+
+		<dt class="col-sm-4 table_dt">
+			緊急聯絡人：
+		</dt>
+		<dd class="col-sm-8 table_dd">
+			@Html.DisplayFor(model => model.FamilyName)
+		</dd>
+
+		<dt class="col-sm-4 table_dt">
+			聯絡人電話：
+		</dt>
+		<dd class="col-sm-8 table_dd">
+			@Html.DisplayFor(model => model.FamilyPhone)
+		</dd>
+
+		<dt class="col-sm-4 table_dt">
+			與聯絡人關係：
+		</dt>
+		<dd class="col-sm-8 table_dd">
+			@Html.DisplayFor(model => model.Relation)
+		</dd>
+	</dl>
+
+</div>
+
+<div class="container btn_position">
+	<button class="btn_back"><a asp-controller="AppointmentForms" asp-action="Schedule" asp-route-id="@Model?.CaseId">返回</a></button>
+</div>

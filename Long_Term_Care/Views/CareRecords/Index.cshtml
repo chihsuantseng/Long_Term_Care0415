@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Long_Term_Care.Models.CareRecord>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<link rel="stylesheet" href="~/css/CareRecord/css/recordIndex.css" asp-append-version="true">
+<div id="record_view" class="container">
+    <h1>照護紀錄表</h1>
+
+
+    <div id="view_table" class="table-responsive">
+        <table class="table table-hover">
+            <thead class="table-danger">
+                <tr>
+                    @* <th>
+                        紀錄編號
+                    </th> *@
+                    <th>
+                        預約編號
+                    </th>
+                    <th>
+                        個案姓名
+                    </th>
+                    <th>
+                        員工姓名
+                    </th>
+                    <th>
+                        紀錄日期
+                    </th>
+                    <th>
+                        紀錄時間
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Memo)
+                    </th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                       @*  <td>
+                            @Html.DisplayFor(modelItem => item.RecordId)
+                        </td> *@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Reserve.ReserveId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CaseName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmployeeName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RecordDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RecordTime)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Memo)
+                        </td>
+                        <td>
+                            @* <a asp-action="Edit" asp-route-id="@item.RecordId">Edit</a> | *@
+                            <a asp-action="Details" asp-route-id="@item.RecordId" id="care_det">照護明細</a>
+                            @* <a asp-action="Delete" asp-route-id="@item.RecordId">Delete</a> *@
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

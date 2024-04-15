@@ -1,0 +1,253 @@
+﻿@model Long_Term_Care.Models.Member
+
+@{
+
+
+}
+<link rel="stylesheet" href="/css/SignUp/SignUp.css" asp-append-version="true">
+<style>
+    .casexdd {
+        font-size: 30px;
+        display: none;
+        border: 2px solid black;
+        padding: 1%;
+        transition: transform ease 0.5s;
+    }
+
+        .casexdd:hover {
+            box-shadow: 0 0px 15px 15px rgba(43, 42, 42, 0.2);
+            transform: translateY(-1%);
+        }
+</style>
+<form class="row g-3 modal_content_sign w-100" asp-action="Edit" enctype="multipart/form-data">
+    <h1>會員編輯</h1>
+    <hr />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="MemberId" />
+    <hr />
+    <div class="col-md-6">
+        <label asp-for="MemberAvatar" class="control-label"><b>大頭貼</b></label><br />
+        @if (Model.MemberAvatar != null)
+        {
+            <figure class="figure w-25 bg-light ratio ratio-1x1" style="border-radius: 50%;">
+                <img id="apple" class="figure-img img-fluid " src="data:image/*;base64,@(Convert.ToBase64String(Model.MemberAvatar))" style="border-radius: 50%;">
+            </figure>
+            <input asp-for="MemberAvatar" class="form-control" value="@(Convert.ToBase64String(Model.MemberAvatar))" type="hidden" />
+        }
+
+        else
+        {
+            <img id="apple" src="">
+        }
+
+        <input asp-for="MemberAvatar" class="form-control" type="file" onchange="document.getElementById('apple').src = window.URL.createObjectURL(this.files[0])" />
+        <span asp-validation-for="MemberAvatar" class="text-danger"></span>
+    </div>
+    <div class="col-md-6 w-100"></div>
+    <div class="col-md-6">
+        <label asp-for="UserName" class="control-label"><b>*帳號：</b></label>
+        <input asp-for="UserName" class="form-control" />
+        <span asp-validation-for="UserName" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label asp-for="Password" class="control-label"><b>*密碼：</b></label>
+        <input asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <div class="w-100"></div>
+    <div class="col-md-6">
+        <label asp-for="MemberName" class="control-label"><b>*姓名：</b></label>
+        <input asp-for="MemberName" class="form-control" />
+        <span asp-validation-for="MemberName" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="Gender" class="form-check-label"><b>*性別：</b></label><br />
+        <div class="form-check form-check-inline">
+            <input asp-for="Gender" class="form-check-input" type="radio" id="inlineCheckbox1" name="Gender" value="男性">
+            <label class="form-check-label" for="inlineCheckbox1">男性</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input asp-for="Gender" class="form-check-input" type="radio" id="inlineCheckbox2" name="Gender" value="女性">
+            <label class="form-check-label" for="inlineCheckbox2">女性</label>
+        </div>
+        <span asp-validation-for="Gender" class="text-danger"></span>
+
+    </div>
+    <div class="col-md-6">
+        <label asp-for="Email" class="control-label"><b>*信箱：</b></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label asp-for="HomePhone" class="control-label"><b>*市話：</b></label>
+        <input asp-for="HomePhone" class="form-control" />
+        <span asp-validation-for="HomePhone" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label asp-for="MobilePhone" class="control-label"><b>*手機：</b></label>
+        <input asp-for="MobilePhone" class="form-control" />
+        <span asp-validation-for="MobilePhone" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label asp-for="City" class="control-label"><b>*城市：</b></label>
+        <input asp-for="City" class="form-control" />
+        <span asp-validation-for="City" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label asp-for="District" class="control-label"><b>*地區：</b></label>
+        <input asp-for="District" class="form-control" />
+        <span asp-validation-for="District" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label asp-for="Address" class="control-label"><b>*地址：</b></label>
+        <input asp-for="Address" class="form-control" />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+
+    @if (@ViewBag.CaseId != null)
+    {
+        <select asp-for="CaseId " class="form-control visually-hidden" asp-items="ViewBag.CaseId"></select>
+        <span asp-validation-for="CaseId" class="text-danger"></span> <br />
+    }
+    else
+    {
+        <input asp-for="CaseId " class="form-control visually-hidden" value="@ViewBag.CaseId"></input>
+        <span asp-validation-for="CaseId" class="text-danger"></span> <br />
+    }
+
+
+
+    <div class=" d-grid gap-2 col-6 mx-auto">
+        <p>
+
+            <button class="btn btn-success w-100" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                查看個案資料
+            </button>
+        </p>
+
+    </div>
+
+    <div class="collapse" id="collapseExample">
+
+        @foreach (var item in Model.Cases)
+        {
+            <div class="d-flex justify-content-between casexdd">
+                <div class=" row g-3" style="width:85%">
+
+                    <div class="col-md-6">
+                        <label class="control-label"><b>*姓名：@item.CaseName</b></label>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label"><b>*性別：@item.Gender</b></label>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label"><b>*生日：@item.Birthdate</b></label>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label"><b>*年齡：@item.Age</b></label>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label"><b>*身分證：@item.IdentificationNumber</b></label>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label"><b>*身分別：@item.IdentityType</b></label>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label"><b>*手機號碼：@item.CasePhone</b></label>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label"><b>*家屬電話：@item.FamilyPhone</b></label>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label"><b>*負責家屬：@item.FamilyPhone</b></label>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label"><b>*城市：@item.City</b></label>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label"><b>*地區：@item.District</b></label>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label"><b>*地址：@item.Address</b></label>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label"><b>*關係：@item.Relation</b></label>
+
+                    </div>
+                    <div class="col-md-6"></div>
+                </div>
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-center" style="width:15%">
+                    <!-- 要加入超連結轉跳 -->
+                    <a class="btn btn-success align-self-center" role="button" asp-action="EditCase" asp-route-id="@item.CaseId"><i class="fa-solid fa-user-pen"></i></a>
+                    <a class="btn btn-danger align-self-center" role="button" data-bs-toggle="modal" data-bs-target="#@item.CaseId"><i class="fa-solid fa-user-minus"></i></a>
+                </div>
+
+
+            </div>
+            <br />
+            <!-- Modal -->
+            <div class="modal fade" id="@item.CaseId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">刪除警告</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            是否確認刪除此筆個案?
+                        </div>
+                        <div class="modal-footer">
+                            <a role="button" class="btn btn-primary" asp-action="DeleteCase" asp-route-id="@item.CaseId">確認</a>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <br /><br />
+        <div class="border row g-3">
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <p>
+                    <!-- 要加入超連結轉跳 -->
+                    <a class="btn btn-success w-100 xdd1" role="button" asp-action="CreateCase">新增資料</a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-12 signbtn">
+        <!-- 要加入超連結轉跳 -->
+        <button class="btn btn-success signup_btn xdd1" type="submit">確認</button>
+        <a class="btn btn-danger cancel_btn xdd1" role="button" asp-action="LogIn">取消</a>
+    </div>
+</form>
+<!-- Button trigger modal -->
+
+
+
+
+
+<script>
+    @*   AddCase.onclick = function () {
+        $("#casevalue").val("@ViewBag.add")
+
+        } *@
+
+</script>
+

@@ -1,0 +1,64 @@
+﻿@media (min-width: 1024px) {
+    #first_top {
+        margin-top: 1%;
+    }
+
+    #view_care {
+        float: right;
+        font-size: 30px;
+        color: darkred;
+        background-color: rgb(253, 210, 210);
+        border: 2px solid darkred;
+        font-weight: bold;
+    }
+    #app_Index {
+        font-size: 20px;
+    }
+    #cre_record {
+        font-size: 22px;
+        font-weight: bold;
+    }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+    #first_top {
+        margin-top: 1%;
+    }
+
+    #view_care {
+        float: right;
+        font-size: 26px;
+        color: darkred;
+        background-color: rgb(253, 210, 210);
+        border: 2px solid darkred;
+        font-weight: bold;
+    }
+    #app_Index {
+        font-size: 20px;
+    }
+    #cre_record {
+        font-size: 22px;
+        font-weight: bold;
+    }
+}
+
+@media (max-width: 767px) and (min-width: 0px) {
+    #first_top {
+        margin-top: 1%;
+    }
+
+    #view_care {
+        float: right;
+        font-size: 24px;
+        color: darkred;
+        background-color: rgb(253, 210, 210);
+        border: 2px solid darkred;
+        font-weight: bold;
+    }
+    #app_Index {
+        font-size: 20px;
+    }
+    #cre_record {
+        font-size: 22px;
+        font-weight: bold;
+    }
+}

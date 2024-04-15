@@ -1,0 +1,101 @@
+﻿@model List<Physicals>
+
+<link rel="stylesheet" href="~\wwwroot\css\AnalyzeResult\css\AnalizeResult.css">
+
+
+<div class="container">
+    <div class="row pt-4 pb-3">
+        <div class="col-6">
+            <h2 class="text-primary">
+                 身體數據紀錄
+            </h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="PhysicalExamination" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"> + 新增資料</i>
+            </a>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>檢驗日期</td>
+                <td>身高Height</td>
+                <td>體重Weight</td>
+                <td>收縮壓SBP</td>
+                <td>舒張壓DBP</td>
+                <td>腰圍Waist</td>
+                <td>紅血球RBC</td>
+                <td>白血球WBC</td>
+                <td>血紅素HB</td>
+                <td>血比容HCT</td>
+                <td>血小板PLT</td>
+                <td>尿素氮BUN</td>
+                <td>肌酸酐Crea</td>
+                <td>三酸甘油脂TG</td>
+                <td>高密度膽固醇HDL</td>
+                <td>低密度膽固醇LDL</td>
+                <td>天門冬胺酸轉胺酶AST</td>
+                <td>血清轉胺酶ALT</td>
+                <td>不飽合鐵結合能UIBC</td>
+                <td>血清鐵Fe</td>
+                <td>血鈣Ca</td>
+                <td></td>
+
+            </tr>
+        </thead>
+        <tbody>
+           
+            @foreach (var obj in Model.OrderBy(o => o.PhysicalId))  
+               { <tr>
+                    <td>@obj.PhysicalId</td>
+                    <td>@obj.ExaminDate</td>
+                    <td>@obj.Height</td>
+                    <td>@obj.Weight</td>
+                    <td>@obj.SBP</td>
+                    <td>@obj.DBP</td>
+                    <td>@obj.Waist</td>
+                    <td>@obj.RBC</td>
+                    <td>@obj.WBC</td>
+                    <td>@obj.HB</td>
+                    <td>@obj.HCT</td>
+                    <td>@obj.PLT</td>
+                    <td>@obj.BUN</td>
+                    <td>@obj.CREA</td>
+                    <td>@obj.TG</td>
+                    <td>@obj.HDL</td>
+                    <td>@obj.LDL</td>
+                    <td>@obj.AST</td>
+                    <td>@obj.ALT</td>
+                    <td>@obj.UIBC</td>
+                    <td>@obj.Fe</td>
+                    <td>@obj.Ca</td>
+                    <td>
+                        <div class="w-75 btn-group" role="group">
+                            <a asp-controller="PhysicalExamination" asp-action="Edit" asp-route-physicalId="@obj.PhysicalId" class="btn btn-primary mx-2">
+                                <i class="bi bi-pencil-square"></i>編輯
+                            </a>
+                            <a asp-controller="PhysicalExamination" asp-action="Delete" asp-route-physicalId="@obj.PhysicalId" class="btn btn-secondary mx-2">
+                                <i class="bi bi-trash3-fill"></i>刪除
+                            </a>
+                            <a asp-controller="PhysicalExamination" asp-action="AnalyzeResult" asp-route-physicalId="@obj.PhysicalId" class="btn btn-secondary mx-2">
+                                <i class="bi bi-trash3-fill"></i>分析
+                            </a>
+                           
+
+                        </div>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+       
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+
+
+
+

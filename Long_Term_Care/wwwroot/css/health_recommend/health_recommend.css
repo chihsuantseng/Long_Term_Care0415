@@ -1,0 +1,7 @@
+﻿.recommend_img {
+    background-image: url(/css/health_recommend/img/recommend_1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}

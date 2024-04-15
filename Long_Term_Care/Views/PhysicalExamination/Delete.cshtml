@@ -1,0 +1,129 @@
+﻿@model Physicals
+
+
+<link rel="stylesheet" href="~/css/PhysicalExamination/css/PhysicalExamination.css">
+
+<div id="add_record" class="container">
+    <h1>身體數據紀錄</h1>
+    <form method="post">
+        <div class="container" id="record_form">
+            <div class="row">
+
+                <!-- 第一欄 -->
+                <div class="col">
+                    <div class="" id="">
+
+                        <input asp-for="PhysicalId" hidden />
+
+
+                        <div id="_rowHeight" class="form-group">
+                            <label asp-for="ExaminDate" class="p-0">檢驗日期</label>
+                            <input type="date" asp-for="ExaminDate" disabled class="form-control"><span>cm</span>
+                        </div>
+                        <div id="_rowHeight" class="form-group">
+                            <label asp-for="Height" class="p-0">身高</label>
+                            <input type="number" asp-for="Height" disabled class="form-control"><span>cm</span>
+                        </div>
+                        <div asp-for="Weight" class="form-group">
+                            <label asp-for="Weight">體重：</label>
+                            <input type="number" asp-for="Weight" disabled class="form-control"><span>kg</span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="SBP">血壓：</label><br>
+                            <span class="_pressure">收縮壓 </span>
+                            <input type="number" asp-for="SBP" disabled class="form-control"><br>
+                            <span class="_pressure">舒張壓 </span>
+                            <input type="number" asp-for="SBP" disabled class="form-control"><span>mmHg</span><br>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Waist">腰圍：</label>
+                            <input type="number" disabled asp-for="Waist"><span>吋</span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="WBC">白血球WBC：</label>
+                            <input type ="number" asp-for="WBC"><span>106/uL</span>
+                        </div> 
+                        <div class="form-group">
+                            <label asp-for="RBC">紅血球RBC：</label>
+                            <input type="number" asp-for="RBC"><span>106/uL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 第二欄 -->
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="HB">血紅素HB：</label>
+                        <input type="number" asp-for="HB"><span>106/uL</span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="HCT">血比容HCT：</label>
+                        <input type="number" asp-for="HCT"><span>106/uL</span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PLT">血小板PLT：</label>
+                        <input type="number" asp-for="PLT"><span>106/uL</span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="BUN">尿素氮BUN：</label>
+                        <input type="number" asp-for="BUN"><span>106/uL</span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CREA">肌酸酐Crea：</label>
+                        <input type="number" asp-for="CREA"><span>106/uL</span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TG">三酸甘油脂TG：</label>
+                        <input type="number" asp-for="TG"><span>106/uL</span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="HDL">高密度膽固醇HDL：</label>
+                        <input type="number" asp-for="HDL"><span>106/uL</span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LDL">低密度膽固醇LDL：</label>
+                        <input type="number" asp-for="LDL"><span>106/uL</span>
+                    </div>
+                </div>
+
+                <!-- 第三欄 -->
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="AST">天門冬胺酸轉胺酶AST：</label>
+                        <input type="number" asp-for="AST"><span>106/uL</span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ALT">血清轉胺酶ALT：</label>
+                        <input type="number" asp-for="ALT"><span>106/uL</span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="UIBC">不飽合鐵結合能UIBC：</label>
+                        <input type="number" asp-for="UIBC"><span>106/uL</span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Fe">血清鐵Fe：</label>
+                        <input type="number" asp-for="Fe"><span>106/uL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <button onclick="saveData()" class="btn btn-success btn-lg">刪除</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a asp-controller="PhysicalExamination" asp-action="PhysicalExamination" class="btn btn-success btn-lg form-control">
+            回上一頁
+        </a>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+<script src="~/css/PhysicalExamination/js/PhysicalExamination.js"></script>
+
+

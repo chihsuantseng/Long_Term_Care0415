@@ -1,0 +1,104 @@
+﻿@model IEnumerable<Long_Term_Care.Models.Member>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MemberAvatar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MemberName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HomePhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MobilePhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.District)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Case)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+           <td>
+         @if (item.MemberAvatar != null) {
+            <img src="data:image/*;base64,@(Convert.ToBase64String(item.MemberAvatar))">
+         } else {
+            @: 尚未有圖片
+         }
+      </td
+            <td>
+                @Html.DisplayFor(modelItem => item.MemberName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HomePhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MobilePhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.District)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Case.CaseId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MemberId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.MemberId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.MemberId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,126 @@
+﻿
+<link rel="stylesheet" href="~/css/Onlycal/css/Onlycal.css" asp-append-version="true">
+<div id="_spreadsheet" class="container">
+    <h1 id="_spread">長照服務試算</h1>
+    <br>
+    <div id="_back">
+        <h3>照顧服務B碼</h3>
+        <button class="btn btn-outline-primary mb-2" onclick="addRow()">新增</button>
+        <button class="btn btn-outline-info mb-2" onclick="deleteRow()">刪除</button>
+        <div class="table-responsive">
+            <table id="_table" class="table table-striped">
+                <thead>
+                    <tr class="table-light">
+                        <td>CMS等級</td>
+                        <td>
+                            <select class="_ranged" onchange="allowance(this)">
+                                <option value="0">第一級</option>
+                                <option value="10020">第二級</option>
+                                <option value="15460">第三級</option>
+                                <option value="18580">第四級</option>
+                                <option value="24100">第五級</option>
+                                <option value="28070">第六級</option>
+                                <option value="32090">第七級</option>
+                                <option value="36180">第八級</option>
+                            </select>
+                        </td>
+                        <td>戶別</td>
+                        <td>
+                            <select class="_typepay" id="_apple" onchange="updatetwo(this)">
+                                <option value="0.16">一般戶</option>
+                                <option value="0.05">中低收入戶</option>
+                                <option value="0.0">低收入戶</option>
+                            </select>
+                        </td>
+                        <td>每月補助額度上限</td>
+                        <td class="_allprice">0</td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr class="table-success">
+                        <th>刪除</th>
+                        <th>服務項目</th>
+                        <th>單價</th>
+                        <th>實際支付比率</th>
+                        <th>次數/月</th>
+                        <th>支付小計</th>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+        <div id="_total">小計合計：0</div>
+        <div id="_alltotal">補助使用額度：0</div>
+        <div id="_ownexp">超出額度應自費額：0</div>
+        <div id="_totalpay">總支付金額：NT$0</div>
+
+        <hr>
+        <h3>喘息服務G碼</h3>
+        <div class="table-responsive">
+            <table id="_table2" class="table table-striped">
+                <thead>
+                    <tr class="table-light">
+                        <td>CMS等級</td>
+                        <td>
+                            <select class="g_ranged" onchange="Gallowance(this)">
+                                <option value="0">第一級</option>
+                                <option value="32420">第二級</option>
+                                <option value="32420">第三級</option>
+                                <option value="32420">第四級</option>
+                                <option value="32420">第五級</option>
+                                <option value="32420">第六級</option>
+                                <option value="48510">第七級</option>
+                                <option value="48510">第八級</option>
+                            </select>
+                        </td>
+                        <td>戶別</td>
+                        <td>
+                            <select class="g_typepay" id="" onchange="Gupdatetwo(this)">
+                                <option value="0.16">一般戶</option>
+                                <option value="0.05">中低收入戶</option>
+                                <option value="0.0">低收入戶</option>
+                            </select>
+                        </td>
+                        <td>每年補助額度上限</td>
+                        <td class="g_allprice">0</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--  -->
+                    <tr class="table-danger">
+                        <th></th>
+                        <th>服務項目</th>
+                        <th>單價</th>
+                        <th>實際支付比率</th>
+                        <th>次數/年</th>
+                        <th>支付小計</th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>GA09居家喘息服務</td>
+                        <td>770</td>
+                        <td class="g_realpay">0.16</td>
+                        <td><input type="number" class="g_quantity" id="g_quan" value="0" min="0" oninput="GupdateSubtotal(this)"></td>
+                        <td class="g_subtotal">0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="g_alltotal">補助使用額度：0</div>
+        <div id="g_ownexp">超出額度應自費額：0</div>
+        <div id="g_totalpay">總支付金額：NT$0</div>
+    </div>
+    <br>
+    <h4 style="color:darkred;font-weight: bold;">※若欲申請服務請至會員專區預約</h4>
+    <h6>※支付小計=單價*實際支付比率*次數</h6>
+    <h6>※補助使用額度=單價*次數</h6>
+    <h6>※超出額度應自費額=(單價*次數-補助額上限)*(1-比率)</h6>
+    <br>
+
+</div>
+<script src="~/css/Onlycal/js/Onlycal.js"></script>
+<script>
+    //初始化一行商品
+    addRow();
+</script>

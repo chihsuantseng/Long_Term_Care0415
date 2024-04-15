@@ -1,0 +1,71 @@
+﻿@model Long_Term_Care.Models.CareRecord
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<link rel="stylesheet" href="~/css/CareRecord/css/recordDetails.css" asp-append-version="true">
+<div id="record_form" class="container">
+    <h1>照護紀錄</h1>
+    <div id="rec_table" class="table-responsive">
+        <table class="table table-hover">
+            <tr>
+                <th class="text-success">照服員</th>
+                <td class="in_center">@Html.DisplayFor(model => model.EmployeeName)</td>
+            </tr>
+            <tr>
+                <th class="text-success">個案姓名</th>
+                <td class="in_center">@Html.DisplayFor(model => model.CaseName)</td>
+            </tr>
+            <tr>
+                <th class="text-success">日期</th>
+                <td class="in_center">@Html.DisplayFor(model => model.RecordDate)</td>
+            </tr>
+            <tr>
+                <th class="text-success">時間</th>
+                <td class="in_center">@Html.DisplayFor(model => model.RecordTime)</td>
+            </tr>
+            <tr>
+                <th class="text-success">體溫</th>
+                <td class="in_center" id="_temp">@Html.DisplayFor(model => model.Temperature)</td>
+            </tr>
+            <tr>
+                <th class="text-success">心跳</th>
+                <td class="in_center" id="_heart"> @Html.DisplayFor(model => model.Heartbeat)</td>
+            </tr>
+            <tr>
+                <th class="text-success">呼吸</th>
+                <td class="in_center" id="_brea">@Html.DisplayFor(model => model.Breathe)</td>
+            </tr>
+            <tr>
+                <th class="text-success">飯前血糖</th>
+                <td class="in_center" id="_befglu">@Html.DisplayFor(model => model.BefGlucose)</td>
+            </tr>
+            <tr>
+                <th class="text-success">飯後血糖</th>
+                <td class="in_center" id="_aftglu">@Html.DisplayFor(model => model.AftGlucose)</td>
+            </tr>
+            <tr>
+                <th class="text-success">收縮壓</th>
+                <td class="in_center" id="_sbp">@Html.DisplayFor(model => model.Sbp)</td>
+            </tr>
+            <tr>
+                <th class="text-success">舒張壓</th>
+                <td class="in_center" id="_dbp">@Html.DisplayFor(model => model.Dbp)</td>
+            </tr>
+            <tr>
+                <th class="text-success">其他事項</th>
+                <td class="in_center">@Html.DisplayFor(model => model.Memo)</td>
+            </tr>
+
+        </table>
+    </div>
+    <div>
+        @* <a asp-action="Edit" asp-route-id="@Model?.RecordId">Edit</a> | *@
+        <a asp-action="Index" id="page_back">回上一頁</a>
+    </div>
+    <br />
+</div>
+<script src="~/css/CareRecord/js/recordDetails.js"></script>
+
+

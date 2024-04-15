@@ -1,0 +1,88 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+}
+@model Long_Term_Care.Models.Member
+<link rel="stylesheet" href="~/css/LogIn/css/LogIn.css" />
+<div class=" p-5 d-flex justify-content-around " id="LoginImg">
+	<img src="~/css/LogIn/img/image2.jpg" class="w-50" />
+	<div class="card w-25 p-3">
+		<div class="card-body">
+			<h5 class="card-title">登入</h5><br>
+			<form class="needs-validation row" asp-action="LogIn" method="post" novalidate>
+				<div class="mb-3 col-12">
+
+					<label for="inputAccount" class="form-label">帳號</label>
+
+					<input type="text" class="form-control" name="account" id="inputAccount" required>
+
+					<div class="invalid-feedback">
+						請輸入帳號!
+					</div>
+					<div>@ViewBag.Error</div>
+				</div>
+
+
+				<label for="inputPassword" class="form-label">密碼</label>
+				<div class="mb-3 input-group col-12" id="show_hide_password">
+
+
+					<input type="password" class="form-control" name="password" id="inputPassword" required>
+
+
+					<a href="" class="input-group-text"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+
+
+					<div class="invalid-feedback">
+						請輸入密碼!
+					</div>
+					<div class="col-12">@ViewBag.Error</div>
+				</div>
+
+
+
+
+
+
+
+				<div class="d-grid gap-2">
+					<button class="btn btn-warning" type="submit">登入</button>
+				</div>
+
+			</form>
+			<div class="d-flex bd-highlight mb-3">
+				<a class=" p-2 bd-highlight" asp-area="" asp-controller="Members" asp-action="ForgetPassword">忘記密碼</a>
+
+				<a class=" ms-auto p-2 bd-highlight" asp-area="" asp-controller="Members" asp-action="SignUp">註冊</a>
+			</div>
+			@* <div class="text-center">
+				<p class="blockquote-footer">
+					或 —
+				</p>
+			</div> *@
+
+		@* 	<div class="row gx-2">
+				<div class="col text-center">
+
+					<div class="p-3 border bg-white " role="button" data-bs-toggle="button">
+						<img src="~/css/LogIn/img/google-g-2015.svg" class="w-25 h-75" alt="" ;> Google
+					</div>
+				</div>
+				<div class="col text-center">
+					<div class="p-3 border bg-white" role="button" data-bs-toggle="button">
+						<img src="~/css/LogIn/img/facebook-3-2.svg" class="w-25 h-75" alt="" ;> Facebook
+					</div>
+				</div>
+			</div> *@
+
+
+
+		</div>
+
+	</div>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script src="~/css/LogIn/js/LogIn.js"></script>

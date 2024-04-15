@@ -1,0 +1,62 @@
+﻿@model Long_Term_Care.Models.Bservice
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Bservice</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MemberId" class="control-label"></label>
+                <select asp-for="MemberId" class ="form-control" asp-items="ViewBag.MemberId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bdate" class="control-label"></label>
+                <input asp-for="Bdate" class="form-control" />
+                <span asp-validation-for="Bdate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Addtotal" class="control-label"></label>
+                <input asp-for="Addtotal" class="form-control" />
+                <span asp-validation-for="Addtotal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Balnum" class="control-label"></label>
+                <input asp-for="Balnum" class="form-control" />
+                <span asp-validation-for="Balnum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ownexp" class="control-label"></label>
+                <input asp-for="Ownexp" class="form-control" />
+                <span asp-validation-for="Ownexp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CmsRanged" class="control-label"></label>
+                <input asp-for="CmsRanged" class="form-control" />
+                <span asp-validation-for="CmsRanged" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cms" class="control-label"></label>
+                <input asp-for="Cms" class="form-control" />
+                <span asp-validation-for="Cms" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

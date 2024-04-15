@@ -1,0 +1,26 @@
+﻿@{
+	ViewBag.Title = "保健知識";
+	Layout = "_LayoutHealth";
+}
+
+<div class="container">
+	@foreach (var item in Model)
+	{
+		<div class="card mt-4 mb-4 info_card">
+			<div class="row g-0">
+
+				<div class="col-md-5  info_img">
+					<img src="/css/health_info/img/@item.Info_img" class="img-fluid rounded-start">
+				</div>
+				<div class="col-md-7 p-4 card-body">
+					<h3 class="card-title">
+						@item.Info_title
+					</h3>
+					<pre>
+						@item.Info_context
+						</pre>
+				</div>
+			</div>
+		</div>
+	}
+</div>

@@ -1,0 +1,74 @@
+﻿<link rel="stylesheet" href="~/css/ReservationByDate/css/ReservationByDate.css">
+<link rel="stylesheet" href="~/css/ReservationByDate/js/ReservationByDate.js">
+
+@{
+    var jsonAppointments = ViewData["AppointmentsJson"] as string;
+}
+<head>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js'></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var appointments = @Html.Raw(jsonAppointments); // 將 JSON 字符串解析為 JavaScript 物件
+
+            var Events = [];
+            appointments.forEach(function (appointment) {
+                var event = {
+                    title: appointment.EmployeeName,
+                    start: appointment.WorkingDate + 'T' + appointment.StartTime,
+                    end: appointment.WorkingDate + 'T' + appointment.EndTime
+                };
+                Events.push(event);
+            });
+
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: Events
+            });
+            calendar.render();
+        });
+    </script>
+</head>
+
+<body>
+
+<!-- 左側 選擇用月曆檢視 -->
+<div class="container">
+    <div class="row row-cols-4">
+
+
+        <div class="sort col-2" id="option">
+            <div class="form-check">
+                <h5>檢視方法</h5>
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    以日期預約
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                <label class="form-check-label" for="flexCheckChecked">
+                    以照服員預約
+                </label>
+            </div>
+        </div>
+
+
+
+        <!-- 右側 月曆式班表 -->
+
+        <div class="sort col-10" id="">
+            <div class="container-fluid">
+                <div id='calendar'></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+</body>
+
+
+
+
+           

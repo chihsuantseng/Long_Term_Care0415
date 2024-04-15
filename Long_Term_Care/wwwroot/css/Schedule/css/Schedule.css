@@ -1,0 +1,112 @@
+﻿/* ROW */
+.row_style {
+    margin: 2rem 0 2rem 0;
+    /* border: 3px solid orange; */
+    border-radius: 50px;
+    background-color: rgb(219, 255, 238, 0.4);
+    padding: 50px;
+}
+
+/* 欄位高度 */
+.col_height {
+    height: 100%;
+    margin: 0rem 0 0rem 0;
+}
+
+/* month */
+._month {
+    height: 20%;
+    padding: 30px 0 0 30px;
+    font-size: 3rem;
+    color: #666666;
+}
+
+/* date */
+._date {
+    height: 40%;
+    padding: 30px 0 0 30px;
+    font-size: 6rem;
+    text-align: center;
+}
+
+/* day */
+._day {
+    height: 20%;
+    padding: 30px 60px 0 30px;
+    font-size: 2rem;
+    text-align: end;
+}
+
+/* person */
+.case_count {
+    height: 20%;
+    padding: 30px 0 0 30px;
+    font-size: 2rem;
+    text-align: center;
+    color: #666666;
+}
+
+/* 個案圖片style */
+._CaseAvatar {
+    /* height: 80%; */
+    max-width: 100%;
+    background-color: rgb(221, 171, 160, 0.1);
+    border-radius: 100%;
+}
+
+
+.no_result {
+    text-align: center;
+}
+
+    .no_result > img {
+        width: 350px;
+        height: 350px;
+    }
+
+/* 姓名&預約時間 */
+.name_time {
+    height: 20%;
+}
+
+div.col_height p {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+/* 按鈕 */
+._zone {
+    margin-bottom: 3rem;
+}
+
+._btnposition {
+    text-align: center;
+}
+
+._btn1,
+._btn2 {
+    margin-right: 3rem;
+    margin-left: 3rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.35rem;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+    background-color: #FAF8F3;
+}
+
+    ._btn1:hover, ._btn2:hover {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    ._btn1 a, ._btn2 a {
+        text-decoration: none;
+        color: #666666;
+    }
+
+@media (min-width: 991.78px) {
+    .col_height {
+        margin-top: -1.5rem;
+        margin-bottom: -2rem;
+    }
+}

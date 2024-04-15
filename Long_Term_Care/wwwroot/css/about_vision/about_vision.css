@@ -1,0 +1,46 @@
+﻿/* 第一區塊 */
+.first_aera_title {
+    text-align: center;
+    font-weight: 500;
+}
+
+    .first_aera_title::before {
+        content: "";
+        display: inline-block;
+        width: 200px;
+        height: 3px;
+        background-color: #DDABA0;
+        margin-right: 30px;
+        margin-bottom: 11px;
+    }
+
+    .first_aera_title::after {
+        content: "";
+        display: inline-block;
+        width: 200px;
+        height: 3px;
+        background-color: #DDABA0;
+        margin-left: 30px;
+        margin-bottom: 11px;
+    }
+
+.first_aera_content {
+    text-align: center;
+    color: black;
+    font-size: 18px;
+}
+/* 第二區塊 */
+.second_aera_title::before {
+    content: "";
+    display: inline-block;
+    width: 100px;
+    height: 3px;
+    background-color: #DDABA0;
+    margin-right: 30px;
+    margin-bottom: 11px;
+}
+
+.second_aera_content {
+    color: black;
+    font-size: 18px;
+}

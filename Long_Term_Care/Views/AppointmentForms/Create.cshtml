@@ -1,0 +1,333 @@
+﻿@model Long_Term_Care.Models.AppointmentForm
+@using System.Text.Json;
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- bootstrap -->
+    <link href="~\css\Layout\css\bootstrap.css" rel="stylesheet" />
+    
+    <!-- 月曆框架 -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+
+
+
+
+
+    <!-- 本頁 css -->
+    <style>
+        body {
+            background-color: antiquewhite;
+        }
+
+        #AppointForm_AllData {
+            padding-top: 20px;
+        }
+
+        .clicked {
+            /* 在這裡添加按鈕點擊後的樣式，比如保留背景顏色或加粗邊框 */
+            color: white;
+            background-color: #198754; /* 設置背景顏色 */
+        }
+
+        #sheetDataContainer button {
+            margin: 2px;
+        }
+
+        #submitButton {
+            margin-top: 4px;
+            margin-bottom: 4px;
+        }
+    </style>
+
+    <title>查詢/選擇 照服員、日期、時段</title>
+</head>
+
+<body>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+            crossorigin="anonymous">
+    </script>
+    <div class="container" id="AppointForm_AllData">
+        <div class="col">
+            @* @{
+            var caseNames = ViewData["CaseNames"] as List<string>;
+            }
+            @if (caseNames != null && caseNames.Any())
+            {
+            <div>
+            <label>選擇案例：</label>
+            <select id="caseNameSelect" class="form-control">
+            @foreach (var caseName in caseNames)
+            {
+            <option value="@caseName">@caseName</option>
+            }
+            </select>
+            </div>
+            } *@
+            <div>
+                <h4>第一步：請選擇您的服務項目</h4>
+                <div class="d-grid gap-2 d-md-block" id="sheetDataContainer">
+                    <p>帶入服務項目與次數</p>
+                </div>
+            </div>
+            <hr>
+            <div class="col p-3">
+                <h4>第二步：請點選您欲預約的日期，指定時段</h4>
+                <div class="p-3 border border-warning" id='calendar' style="height: 400px;"></div>
+            </div>
+            <hr>
+
+            <!-- step.3 彈跳視窗 -->
+            <div class="modal fade" id="timeSlotModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">您指定日期</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-header">
+                            <h5 id="sheetDataFromContainer1"></h5>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="row">
+                                <h4>請指定時段</h4>
+                                <h6>※注意：半小時為一次，請勿超過試算表選定的每月次數</h6>
+                                <div class="col">
+                                    <div>
+                                        <input type="checkbox" id="timePeriod1" value="09:00~09:30">
+                                        <label for="timePeriod1">09:00~09:30</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id="timePeriod2" value="09:30~10:00">
+                                        <label for="timePeriod2">09:30~10:00</label>
+
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id="timePeriod3" value="10:00~10:30">
+                                        <label for="timePeriod3">10:00~10:30</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id="timePeriod4" value="10:30~11:00">
+                                        <label for="timePeriod4">10:30~11:00</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id="timePeriod5" value="11:00~11:30">
+                                        <label for="timePeriod5">11:00~11:30</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id="timePeriod6" value="11:30~12:00">
+                                        <label for="timePeriod6">11:30~12:00</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id="timePeriod7" value="12:00~12:30">
+                                        <label for="timePeriod7">12:00~12:30</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id="timePeriod8" value="12:30~13:00">
+                                        <label for="timePeriod8">12:30~13:00</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div>
+                                        <input type="checkbox" id="timePeriod9" value="13:00~13:30">
+                                        <label for="timePeriod9">13:00~13:30</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id="timePeriod10" value="13:30~14:00">
+                                        <label for="timePeriod10">13:30~14:00</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id="timePeriod11" value="14:00~14:30">
+                                        <label for="timePeriod11">14:00~14:30</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id="timePeriod12" value="14:30~15:00">
+                                        <label for="timePeriod12">14:30~15:00</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id="timePeriod13" value="15:00~15:30">
+                                        <label for="timePeriod13">15:00~15:30</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id="timePeriod14" value="15:30~16:00">
+                                        <label for="timePeriod14">15:30~16:00</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id="timePeriod15" value="16:00~16:30">
+                                        <label for="timePeriod15">16:00~16:30</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id="timePeriod16" value="16:30~17:00">
+                                        <label for="timePeriod16">16:30~17:00</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="CombineAllData">保存</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-3 bg-success text-dark bg-opacity-25">
+                <h4>第三步：確認選擇的服務項目與時段</h4>
+                <div id="combinedDataContainer">可手動刪除服務項目、時段，但要從第一步開始重選</div>
+            </div>
+        </div>
+        <button class="btn btn-success fs-5" id="submitButton">送出</button>
+    </div>
+
+    <div id="formContainer" style="display: none;">
+        <iframe id="hiddenFrame" name="hiddenFrame"></iframe>
+
+        <form asp-action="Create" id="createForm" target="hiddenFrame">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MemberId" class="control-label"></label>
+                <select asp-for="MemberId" class="form-control" asp-items="ViewBag.MemberId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReserveTime" class="control-label"></label>
+                <input asp-for="ReserveTime" class="form-control" />
+                <span asp-validation-for="ReserveTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CaseId" class="control-label"></label>
+                <select asp-for="CaseId" class="form-control" asp-items="ViewBag.CaseId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="CaseAvatar" class="control-label"></label>
+                <input asp-for="CaseAvatar" class="form-control" />
+                <span asp-validation-for="CaseAvatar" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CaseName" class="control-label"></label>
+                <input asp-for="CaseName" class="form-control" value="@ViewData["SelectedCaseName"]" />
+                <span asp-validation-for="CaseName" class="text-danger"></span>
+            </div>
+
+            @{
+                var employeeId = ViewData["SelectedEmployeeId"] as int?;
+                var EmployeeIdList = ViewData["EmployeeId"] as SelectList;
+            }
+            <div class="form-group">
+                <label asp-for="EmployeeId" class="control-label"></label>
+                <select asp-for="EmployeeId" class="form-control" asp-items="ViewBag.EmployeeId">
+                    @if (employeeId != null)
+                    {
+                        <option value="@employeeId" selected>@employeeId</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EmployeeName" class="control-label"></label>
+                <input asp-for="EmployeeName" class="form-control" value="@ViewData["SelectedEmployeeName"]" />
+                <span asp-validation-for="EmployeeName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ServiceId" class="control-label"></label>
+                <input asp-for="ServiceId" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkingDate" class="control-label"></label>
+                <input asp-for="WorkingDate" class="form-control" />
+                <span asp-validation-for="WorkingDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartTime" class="control-label"></label>
+                <input asp-for="StartTime" class="form-control" />
+                <span asp-validation-for="StartTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndTime" class="control-label"></label>
+                <input asp-for="EndTime" class="form-control" />
+                <span asp-validation-for="EndTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+
+    @{
+        //將現正登入的會員頁面路徑傳到前端，以便提交表單後跳轉到現正登入的會員頁面
+        var redirectUrl = ViewData["RedirectUrl"] as string;
+    }
+
+    <script src="~/css/AppointmentForm/js/AppointmentForm_ChoiceAll_B.js"></script>
+    <script>
+        document.getElementById("submitButton").onclick = function () {
+            var data = FinalData;
+
+            // 獲取當前日期放入ReserveTime
+            var currentDate = new Date();
+            var year = currentDate.getFullYear();
+            var month = ('0' + (currentDate.getMonth() + 1)).slice(-2); // 月份從0開始，所以要加1，並且補零
+            var day = ('0' + currentDate.getDate()).slice(-2); // 補零
+            var formattedDate = year + '-' + month + '-' + day;
+
+
+
+            function fillFormWithData(data) {
+                //將ServiceId切割為符合資料庫格式
+                var serviceId = data.ServiceId.match(/(BA|GA)\d+(c|d\d*|e)?/)[0];
+                document.getElementById("ReserveTime").value = formattedDate;
+                document.getElementById("ServiceId").value = serviceId;
+                document.getElementById("WorkingDate").value = data.WorkingDate + "T00:00";
+                document.getElementById("StartTime").value = data.StartTime;
+                document.getElementById("EndTime").value = data.EndTime;
+            }
+
+
+            var index = 0;
+
+            function submitNextForm() {
+                if (index < data.length) {
+                    fillFormWithData(data[index]);
+                    document.getElementById("createForm").submit();
+                    index++;
+                    setTimeout(submitNextForm, 100); // 延遲提交下一個表單
+                } else {
+                    // 如果已經是最後一個表單，執行跳轉到其他頁面的操作
+                    
+                    window.location.href = "@redirectUrl";
+                }
+            }
+
+            // 開始提交第一個表單
+            submitNextForm();
+        };
+
+    </script>
+
+
+    @* 如果用戶選擇的日期時段，照服員都已有班，則跳出警告 *@
+    @if (ViewData["IsAllEmployeesAssigned"] != null)
+    {
+        <script>
+            var workingDate = decodeURIComponent('@Html.Raw(ViewBag.WorkingDate)');
+            var startTime = decodeURIComponent('@Html.Raw(ViewBag.StartTime)');
+            var endTime = decodeURIComponent('@Html.Raw(ViewBag.EndTime)');
+            alert("您選擇的時段「" + workingDate + "   " + startTime + " ~ " + endTime + "」所有照服員都已被派工，請重新選擇或以電話聯繫我們");
+        </script>
+    }
+</body>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

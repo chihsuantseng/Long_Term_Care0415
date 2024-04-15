@@ -1,0 +1,32 @@
+﻿<link rel="stylesheet" href="/css/health_recommend/health_recommend.css">
+@{
+    ViewBag.Title = "我適合補充什麼？";
+    Layout = "_LayoutHealth";
+}
+<div class="container-fluid p-5 recommend_img">
+    <div class="row g-0">
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-5 test_intro">
+            <div class="m-5">
+                <h1>
+                    關愛您的健康<br>
+                    <h2>照顧家人的同時不忘自己</h2>
+                </h1>
+                <p class="mt-4">
+                    我們深知您的日常生活可能忙碌且充滿挑戰，照顧長照家人需要您付出更多的時間和精力。<br>
+                    然而，在這段旅程中，您的健康同樣重要。<br>
+                </p>
+                <p class="mt-4">
+                    因此，我們精心挑選了一些保健品，<br>
+                    幫助您保持健康，提高身體抵抗力，並為您的家人提供更好的照顧。<br>
+                    透過問卷中的每一題問答來評估您身體所需的保健品
+                </p>
+                <p class="mt-4">您所提供的所有資訊，都只會針對網站內部分析使用，並不會外流，請放心！</p>
+                <div class="text-center">
+                    <a class="btn  btn-outline-primary p-3 m-4" role="button" asp-area="" asp-controller="HealthForm" asp-action="health_form">開始評估</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

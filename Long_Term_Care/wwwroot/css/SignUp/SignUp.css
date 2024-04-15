@@ -1,0 +1,83 @@
+﻿.main_img {
+    background-image: url('');
+    background-size: cover;
+}
+
+/* input[type=text],
+  input[type=password],
+  input[type=tel] {
+    width: 100%;
+    padding: 1%;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-bottom: 2%;
+  } */
+
+/* input[type=checkbox]{
+    margin-top: 2%;
+  } */
+
+/* input[type=text]:focus,
+  input[type=password]:focus,
+  input[type=tel]:focus {
+    background-color: #ddd;
+    outline: none;
+  } */
+
+/*button {
+    float: left;
+    width: 50%;
+    color: #F2E6D8;
+    padding: 1%;
+    margin: 4% 0 0;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    opacity: 0.9;
+    border: none;
+}*/
+.xdd1 {
+    float: left;
+    width: 50%;
+    color: #F2E6D8;
+    padding: 0.24%;
+    margin: 4% 0 0;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    opacity: 0.9;
+    border: none;
+}
+
+.signbtn .signup_btn {
+    border-radius: 30px 0 0 30px;
+}
+
+.signbtn .cancel_btn {
+    border-radius: 0 30px 30px 0;
+}
+
+.modal_content_sign b {
+    font-size: 20px;
+}
+
+form.modal_content_sign {
+    background-color: #D2D9C7;
+    box-shadow: 10px 20px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 20px;
+    margin: 5% auto 5% auto;
+    padding: 2% 3%;
+    width: 70%;
+}
+
+hr {
+    border: 1px solid #f1f1f1;
+    margin: 2% 0;
+}
+
+.modal_content_sign p {
+    margin: 0% 0 2% 2%;
+    color: rgb(156, 158, 158);
+}
+/**/

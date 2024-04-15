@@ -1,0 +1,141 @@
+﻿@model Long_Term_Care.Models.Bservice
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/css/Bspread/css/spreadsheet.css" asp-append-version="true">
+<style>
+    #casename{
+		font-size: 22px;
+    }
+</style>
+
+<form asp-action="Edit">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="BplanId" />
+    <div class="form-group" id="member_Id">
+        <label asp-for="MemberId" class="control-label"></label>
+        <select asp-for="MemberId" class="form-control" asp-items="ViewBag.MemberId"></select>
+        <span asp-validation-for="MemberId" class="text-danger"></span>
+    </div>
+    <div class="form-group" id="case_id">
+        <label asp-for="CaseId" class="control-label"></label>
+        <select asp-for="CaseId" class="form-control" asp-items="ViewBag.CaseId"></select>
+        <span asp-validation-for="CaseId" class="text-danger"></span>
+    </div>
+    <div id="olddate">@Html.DisplayFor(model => model.Bdate)</div>
+    
+    <div id="_spreadsheet" class="container">
+        <h1 id="_spread">照顧服務試算</h1>
+        <span id="_date">日期：</span><input type="date" asp-for="Bdate" class="form-control" id="spr_date" readonly>&nbsp;&nbsp;&nbsp;<span id="_usetotal">當月前次累計使用額度：0</span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="_addown">當月前次累計自費額：<span id="rownexp">@Html.DisplayFor(model => model.Ownexp)</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="casename"></span>
+        <br><br>
+        <div id="_back">
+            <h3>照顧服務B碼</h3>
+            <button id="_newbtn" style="float: inline-start;" class="btn btn-outline-success mb-2" onclick="addRow()">新增</button>
+            <button id="_delbtn" class="btn btn-outline-info mb-2" onclick="deleteRow()">刪除</button>
+            <div class="table-responsive">
+                <table id="_table" class="table table-striped">
+                    <thead>
+                        <tr class="table-light">
+                            <td>CMS等級</td>
+                            <td>
+                                <select class="_ranged" onchange="allowance(this)" id="sel_ran" asp-for="Cms" value="@Html.DisplayFor(model => model.Cms)">
+                                    <option value="0">第一級</option>
+                                    <option value="10020">第二級</option>
+                                    <option value="15460">第三級</option>
+                                    <option value="18580">第四級</option>
+                                    <option value="24100">第五級</option>
+                                    <option value="28070">第六級</option>
+                                    <option value="32090">第七級</option>
+                                    <option value="36180">第八級</option>
+                                </select>
+                                <input asp-for="CmsRanged" class="form-control" id="cmsranged"  readonly />
+                            </td>
+                            <td>戶別</td>
+                            <td>
+                                <select class="_typepay" id="_apple" onchange="updatetwo(this)">
+                                    <option value="0.16">一般戶</option>
+                                    <option value="0.05">中低收入戶</option>
+                                    <option value="0.0">低收入戶</option>
+                                </select>
+                            </td>
+                            <td>每月補助額度上限</td>
+                            <td class="_allprice" id="Allprice">@Html.DisplayFor(model => model.Cms)</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-success">
+                            <th>刪除</th>
+                            <th>服務項目</th>
+                            <th>單價</th>
+                            <th>實際支付比率</th>
+                            <th>次數</th>
+                            <th>支付小計</th>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+            <div id="_addtotal" class="form-group">當月累計總額(單價*次數)：<input asp-for="Addtotal" class="form-control" id="Addtotal" readonly /></div>
+            <div id="_total">小計合計：</div>
+            <div id="_alltotal" class="form-group">
+                補助剩餘額度：<input asp-for="Balnum" class="form-control" id="Balnum" readonly />
+            </div>
+            <div id="_ownexp" class="form-group">超出額度應自費額：<span id="Ownexp" /></div>
+            <div class="form-group" id="hidd_en">
+                <label asp-for="Ownexp" class="control-label">進資料庫的累計自費額</label>
+                <input asp-for="Ownexp" class="form-control" id="owndata" readonly />
+                <span asp-validation-for="Ownexp" class="text-danger"></span>
+            </div>
+
+
+            <div id="_totalpay">總支付金額：$0</div>
+
+            <hr>
+
+            
+            @* <button type="button" onclick="deleted()" class="btn btn-secondary btn-lg">清除試算資料</button> *@
+           
+            <div class="form-group">
+                <button  type="submit" class="btn btn-primary btn-lg" id="save_calculate" style="float:right;">儲存，下一步</button>
+            </div>
+            
+            <br><br>
+            <h6>※支付小計=單價*實際支付比率*次數</h6>
+            <h6>※補助已使用額度=單價*次數</h6>
+            <h6>※補助剩餘額度=補助額上限-補助已使用額度</h6>
+            <h6>※超出額度應自費額=(當月累計總額-補助額上限)*(1-比率)-當月前次累計自費額</h6>
+            <br>
+        </div>
+    </div>
+
+</form>
+
+
+
+
+
+
+
+
+
+@* <div>
+    <a asp-action="Index">Back to List</a>
+</div> *@
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="~/css/Bspread/js/spreadsheet1.js"></script>
+<script src="~/css/Bspread/js/spreadsheet2.js"></script>
+<script>
+    var casename = "name";
+    var casedata = localStorage.getItem(casename);
+    var cadata = JSON.parse(casedata);
+    document.getElementById("casename").innerText = cadata;
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

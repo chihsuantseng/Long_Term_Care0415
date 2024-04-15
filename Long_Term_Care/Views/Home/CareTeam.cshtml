@@ -1,0 +1,37 @@
+﻿@*  @model IEnumerable<bigproject.Models.CareTeamText> 
+ *@
+ @model List<bigproject.Models.CareTeamText> 
+
+@{
+    ViewData["Title"] = "CareTeam";
+   
+}
+
+
+
+
+<div class="container">
+<div class="row row-cols-1 row-cols-md-5 g-4">
+    @foreach (var item in Model)
+    {
+        <div class="col">
+            <div class="card h-100">
+                    <img src="~/img/@item.cLink" class="card-img-top img-fluid rounded" alt="無">
+                <div class="card-body">
+                    <div class="text-center">
+                        <h5 class="card-title">@item.cName</h5>
+                    </div>
+                    <p class="card-text" style="color:black">
+                        擅長服務:@item.cText 
+                    </p>
+                </div>
+                <div id="_cardteam" class="card-footer">
+                    <small>服務時段: @item.cTime</small>
+                </div>
+            </div>
+
+        </div>
+    }
+   
+    </div>
+</div>

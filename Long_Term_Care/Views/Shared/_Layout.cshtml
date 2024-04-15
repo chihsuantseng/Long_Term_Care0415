@@ -1,0 +1,289 @@
+﻿<!DOCTYPE html>
+<html lang="zh-hant">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=yes">
+	<meta name="description"
+		  content="馨安居家照護機構位於台中市，我們提供專業與細心的老人居家長期照顧服務與喘息服務，以完善的服務滿足客戶親人的不安，讓家中長者能夠獲得最好的照顧，身為兒女的您能夠放心的交給馨安。" />
+	<meta name="keywords" content="長照,居家照護,長期照顧,喘息服務,台中市" />
+	<meta name="author" content="以軒、崎瑄、昱廷、文龍、彥宏、敬庭">
+	<title>馨安居家照護 | 安心 | 專業 | 老人長期照顧服務</title>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="~/css/Layout/img/favicon.ico.ico" />
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<!-- Top Bar Icon -->
+	<link rel="stylesheet" href="~/css/Layout/css/fonts/icomoon/style.css">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="~/css/Layout/css/bootstrap.css">
+	<!-- Icon CDN -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<link rel="stylesheet" href="~/css/Layout/css/Layout.css" asp-append-version="true">
+	<!-- Robot -->
+	<script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
+</head>
+<body>
+	<!-- topbar -->
+	<div class="top_bar">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<a href="mailto:jeffcth13@gmail.com" class="">
+						<span class="list-inline-item top_mail_icon icon-envelope-open-o"></span>
+						<span class="d-none d-md-inline-block">jeffcth13@gmail.com</span>
+					</a>
+					<span class="mx-md-2 d-inline-block"></span>
+					<a href="tel:+(04)-2326-5860" class="">
+						<span class="list-inline-item icon-phone"></span>
+						<span class="d-none d-md-inline-block">(04)-2326-5860</span>
+					</a>
+
+					<div class="float-end">
+						<a href="#!" class="">
+							<span class="list-inline-item icon-instagram"></span>
+							<span class="d-none d-md-inline-block">Instagram</span>
+						</a>
+						<span class="mx-md-2 d-inline-block"></span>
+						<a href="#!" class="">
+							<span class="list-inline-item icon-facebook"></span>
+							<span class="d-none d-md-inline-block">Facebook</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- 頁首 -->
+	<nav class="navbar navbar-expand-lg navbar-light _navsite" id="barfixed">
+		<div class="container">
+			<a class="navbar-brand logo_title" asp-area="" asp-controller="Home" asp-action="Index">
+				<img src="~/css/Layout/img/agency_logo_removebg.png" alt="Logo" width="150" height="150">
+			</a>
+			<a asp-area="" asp-controller="Home" asp-action="Index"><span class="_title">馨安長照</span></a>
+			<button class="navbar-toggler btn_style" type="button" data-bs-toggle="collapse"
+					data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+					aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon icon_style"></span>
+			</button>
+			<div class="collapse navbar-collapse list_font mobile_list_height js_navbar" id="navbarNav">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item dropdown list_position">
+						<a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+						   data-bs-toggle="dropdown" aria-expanded="false">
+							<b>
+								關於我們
+							</b>
+						</a>
+						<ul class="dropdown-menu dropdown_style" aria-labelledby="aboutDropdown">
+							<li><a class="dropdown-item" asp-controller="AboutUs" asp-action="about_vision">馨安理念</a></li>
+							<li><a class="dropdown-item" asp-controller="AboutUs" asp-action="about_introduction">馨安簡介</a></li>
+							<li><a class="dropdown-item" asp-controller="Home" asp-action="CareTeam">照護團隊</a></li>
+						</ul>
+					</li>
+					<li class="nav-item list_position">
+						<a class="nav-link link_item service_item" asp-controller="Services" asp-action="Services">服務項目</a>
+					</li>
+					<li class="nav-item dropdown list_position">
+						<a class="nav-link dropdown-toggle" href="#" id="longTermCareDropdown" role="button"
+						   data-bs-toggle="dropdown" aria-expanded="false">
+							<b>
+								長照介紹
+							</b>
+						</a>
+						<ul class="dropdown-menu dropdown_style" aria-labelledby="longTermCareDropdown">
+							<li><a class="dropdown-item" asp-controller="Home" asp-action="LongTermCare2dot0_Intro">長照2.0</a></li>
+							<li><a class="dropdown-item" asp-controller="Home" asp-action="Onlycal">長照試算</a></li>
+							<li><a class="dropdown-item" asp-controller="Home" asp-action="LongTermCare2dot0_SubsidyCondition">補助條件</a></li>
+							<li><a class="dropdown-item" asp-controller="Home" asp-action="LongTermCare2dot0_HowToApply">如何申請</a></li>
+						</ul>
+					</li>
+					<li class="nav-item dropdown list_position">
+						<a class="nav-link dropdown-toggle" href="#" id="supplementsDropdown" role="button"
+						   data-bs-toggle="dropdown" aria-expanded="false">
+							<b>
+								保健品
+							</b>
+						</a>
+						<ul class="dropdown-menu dropdown_style" aria-labelledby="supplementsDropdown">
+							<li><a class="dropdown-item" asp-area="" asp-controller="Health" asp-action="health_info">保健知識</a></li>
+							<li><a class="dropdown-item" asp-area="" asp-controller="Health" asp-action="health_items">保健品一覽表</a></li>
+							<li><a class="dropdown-item" asp-area="" asp-controller="Health" asp-action="health_recommend">我適合補充什麼？</a></li>
+						</ul>
+					</li>
+					<li class="mobile_inline list_position">
+						<a class="nav-link mobile_inline" asp-area="" asp-controller="Members" asp-action="LogIn">
+							<i class="fa-solid fa-circle-user fa-2xl"></i>
+						</a>&nbsp;
+					</li>
+					<li class="mobile_inline list_position">
+						<a class="nav-link mobile_inline mobile_cart" asp-area="" asp-controller="Shopping" asp-action="ShoppingCar">
+							<i class="fa-solid fa-cart-arrow-down fa-2xl"></i>
+						</a>&nbsp;
+					</li>
+					@if (@Context.User.FindFirst("FullName")?.Value != null)
+					{
+					<li class="nav-item list_position">
+						<a class="nav-link link_item service_item">
+							@Context.User.FindFirst("FullName")?.Value 你好
+						</a>
+					</li>
+					}
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div>
+		@RenderBody()
+
+
+
+
+
+		<button type="button" class="btn btn-gotop d-inline-flex align-items-center justify-content-center"
+				data-action="gotop">
+			<i class="fa fa-chevron-up"></i>
+		</button>
+
+		<div class="row_robot" id="webchat" role="main"></div>
+		<button class="open_button" onclick="openBot()"><i class="fa-solid fa-robot"></i></button>
+	</div>
+
+
+	<!-- 頁尾 -->
+	<footer class="text-center mb-0">
+		<div class="container p-4">
+			<div class="row my-4">
+				<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+
+					<div class="rounded-circle bg-white shadow-1-strong d-flex align-items-center justify-content-center mb-4 mx-auto"
+						 style="width: 150px; height: 150px;">
+						<img src="~/css/Layout/img/agency_logo_removebg.png" height="180" alt="" loading="lazy" />
+					</div>
+				</div>
+
+				<div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+					<h5 class="mb-4 footer_title">關於我們</h5>
+
+					<ul class="list-unstyled">
+						<li class="mb-2">
+							<a asp-controller="Aboutus" asp-action="about_vision" class="_fontcolor"><i class="fa-solid fa-seedling"></i>&nbsp;馨安理念</a>
+						</li>
+						<li class="mb-2">
+							<a asp-controller="Aboutus" asp-action="about_introduction" class="_fontcolor"><i class="fa-solid fa-seedling"></i>&nbsp;馨安簡介</a>
+						</li>
+						<li class="mb-2">
+							<a asp-controller="Home" asp-action="CareTeam" class="_fontcolor"><i class="fa-solid fa-seedling"></i>&nbsp;照護團隊</a>
+						</li>
+						<li class="mb-2">
+							<a asp-controller="Services" asp-action="Services" class="_fontcolor"><i class="fa-solid fa-seedling"></i>&nbsp;服務項目</a>
+						</li>
+					</ul>
+
+				</div>
+
+				<div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+					<h5 class="mb-4 footer_title">長照專區</h5>
+
+					<ul class="list-unstyled">
+						<li class="mb-2">
+							<a asp-controller="Home" asp-action="LongTermCare2dot0_Intro" class="_fontcolor"><i class="fa-solid fa-seedling"></i>&nbsp;長照2.0&nbsp;&nbsp;</a>
+						</li>
+						<li class="mb-2">
+							<a asp-controller="Home" asp-action="Onlycal" class="_fontcolor"><i class="fa-solid fa-seedling"></i>&nbsp;長照試算</a>
+						</li>
+						<li class="mb-2">
+							<a asp-controller="Home" asp-action="LongTermCare2dot0_SubsidyCondition" class="_fontcolor"><i class="fa-solid fa-seedling"></i>&nbsp;補助條件</a>
+						</li>
+						<li class="mb-2">
+							<a asp-controller="Home" asp-action="LongTermCare2dot0_HowToApply" class="_fontcolor"><i class="fa-solid fa-seedling"></i>&nbsp;如何申請</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+					<h5 class="mb-4 footer_title">友善網站</h5>
+
+					<ul class="list-unstyled">
+						<li class="mb-2">
+							<a href="https://www.mohw.gov.tw/mp-1.html" target="_blank" rel="noopener noreferrer"
+							   class="_fontcolor"><i class="fa-solid fa-seedling"></i>&nbsp;衛生福利部</a>
+						</li>
+						<li class="mb-2">
+							<a href="https://www.cdc.gov.tw/" target="_blank" rel="noopener noreferrer"
+							   class="_fontcolor"><i class="fa-solid fa-seedling"></i>&nbsp;衛福部疾管署</a>
+						</li>
+						<li class="mb-2">
+							<a href="https://1966.gov.tw/LTC/mp-207.html" target="_blank" rel="noopener noreferrer"
+							   class="_fontcolor"><i class="fa-solid fa-seedling"></i>&nbsp;衛福部長照專區</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+					<h5 class="mb-4 footer_title">聯繫我們</h5>
+
+					<ul class="list-unstyled">
+						<li class="mb-2">
+							<!-- <p class="_fontcolor"><i class="fas fa-phone pe-2"></i>&nbsp;(04)-2326-5860</p> -->
+							<a href="tel:+(04)-2326-5860" class="_fontcolor">
+								<i class="fas fa-phone pe-2"></i>&nbsp;(04)-2326-5860
+							</a>
+						</li>
+						<li class="mb-2">
+							<!-- <p class="_fontcolor"><i class="fas fa-envelope pe-2 mb-0"></i>&nbsp;info@gmail.com</p> -->
+							<a href="mailto:jeffcth13@gmail.com" class="_fontcolor">
+								<i class="fas fa-envelope pe-2 mb-0"></i>&nbsp;jeffcth13@gmail.com
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-12">
+
+					<ul class="list-unstyled d-flex flex-row justify-content-center">
+						<li>
+							<a class="px-2" href="#!">
+								<!-- <i class="fab fa-facebook-square"></i> -->
+								<i class="fa-brands fa-facebook fa-2xl" style="color: #0091ff;"></i>
+							</a>
+						</li>
+						<li>
+							<a class="px-2" href="#!">
+								<!-- <i class="fab fa-instagram"></i> -->
+								<i class="fa-brands fa-instagram fa-2xl" style="color: #f91fb4;"></i>
+							</a>
+						</li>
+						<li>
+							<a class="px-2" href="#!">
+								<i class="fa-brands fa-x-twitter fa-2xl" style="color: #000000;"></i>
+							</a>
+						</li>
+					</ul>
+					<p class="service_time">服務時間　周一至周五 8:00-12:00 ｜ 13:30-17:30</p>
+					<p><a href="https://maps.app.goo.gl/XJ2ACnffURbxjYHk7" target="_blank"
+						   rel="noopener noreferrer" class="address_map">
+						<i class="fas fa-map-marker-alt"></i>&nbsp;408台中市南屯區公益路二段51號18樓
+						</a>
+					</p>
+					@* <p class="text-center org_intro">A long-term care organization located in Taichung City, Taiwan </p> *@
+				</div>
+			</div>
+		</div>
+
+		<!-- Copyright -->
+		<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+			© 2024 Copyright:
+			<a class="text-white" href="#!">Xin-An Long-Term Care Organization</a>
+		</div>
+	</footer>
+	<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/css/Layout/js/Layout.js"></script>
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

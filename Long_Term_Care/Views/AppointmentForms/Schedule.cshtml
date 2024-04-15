@@ -1,0 +1,91 @@
+﻿@model List<AppointmentForm>
+<link rel="stylesheet" href="~/css/Schedule/css/Schedule.css" />
+
+@{
+	var query = Model.GroupBy(o => o.WorkingDate)
+				.Select(g => g.ToList().OrderBy(r => r.StartTime))
+				.ToList();
+
+// 	var query = Model.Where(o => o.EmployeeName == ViewBag.name)
+// 											.GroupBy(o => o.WorkingDate)
+// 											.Select(g => g.ToList().OrderBy(r => r.StartTime))
+// 											.ToList();
+}
+
+
+@if (query.Any())
+{
+	@foreach (var group in query)
+	{
+		var oldtype = group.First().WorkingDate.ToString()!.Replace("/", "-");
+		var _month = Convert.ToDateTime(oldtype).Month;
+		var _date = Convert.ToDateTime(oldtype).Day;
+
+		var newtype = Convert.ToDateTime(oldtype).DayOfWeek.ToString();
+		if (newtype == "Monday") { newtype = "(一)"; }
+		else if (newtype == "Tuesday") { newtype = "(二)"; }
+		else if (newtype == "Wednesday") { newtype = "(三)"; }
+		else if (newtype == "Thursday") { newtype = "(四)"; }
+		else if (newtype == "Friday") { newtype = "(五)"; }
+		else if (newtype == "Saturday") { newtype = "(六)"; }
+		else if (newtype == "Sunday") { newtype = "(日)"; }
+
+
+		<div class="container">
+			<div class="row row_style">
+				<div class="col-3 col_height">
+					<!-- month -->
+					<h4 class="_month">@_month 月</h4>
+					<!-- date -->
+					<h3 class="_date">@_date</h3>
+					<!-- day of week -->
+					<h3 class="_day">@newtype</h3>
+					<!-- CaseCount -->
+					<h3 class="case_count">@group.Count() 位</h3>
+				</div>
+
+				@foreach (var appointment in group.Take(3))
+				{
+					<div class="col-md-3 col_height">
+						<a asp-controller="Cases" asp-action="CaseData" asp-route-id="@appointment.CaseId">
+							<img src="data:image/jpeg;base64,@Convert.ToBase64String(appointment.CaseAvatar)" class="_CaseAvatar" alt="@appointment.CaseName">
+						</a>
+						<div class="name_time">
+							<p>@appointment.CaseName</p>
+							<p>預約時間: @appointment.StartTime</p>
+							<p>結束時間: @appointment.EndTime</p>
+						</div>
+					</div>
+				}
+
+				@for (var i = group.Count(); i < 4; i++)
+				{
+					<div class="col-md-3 col_height">
+						@* 往下生成 *@
+					</div>
+				}
+			</div>
+		</div>
+	}
+}
+else
+{
+	<div class="container">
+		<div class="row row_style">
+			<div class="col-12 col_height no_result">
+				<img src="~/css/Schedule/img/NoResult.png" />
+			</div>
+		</div>
+	</div>
+}
+
+@* Button *@
+<div class="container _zone">
+	<div class="row">
+		<div class="col _btnposition">
+			<button type="button" class="_btn2"><a asp-controller="Employees" asp-action="EditEmployee">確認</a></button>
+		</div>
+	</div>
+</div>
+
+
